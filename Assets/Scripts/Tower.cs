@@ -11,8 +11,12 @@ public class Tower : MonoBehaviour
     public float turnSpeed = 5f;
 
     public Transform weapon;
+    public GameObject bullet;
+    public Transform shootPoint;
 
-    private Vector3 target;
+    private Vector3 target = Vector3.zero;
+
+    private float lastShootTime = 0f;
 
     private void Update()
     {
@@ -55,7 +59,13 @@ public class Tower : MonoBehaviour
 
     private void Shoot()
     {
+        if(target != Vector3.zero && (Time.time > (lastShootTime + fireRate)))
+        {
+            lastShootTime = Time.time;
 
+            GameObject newBullet = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
+            newBullet.GetComponent<Bullet>().StartBullet(target);
+        }
     }
 
     private void OnDrawGizmosSelected()
