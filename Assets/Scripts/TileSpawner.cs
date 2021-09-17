@@ -24,20 +24,11 @@ public class TileSpawner : MonoBehaviour
         public Vector2 position { get; private set; }
         public Vector2 rotation { get; set; }
         public TileType tileType { get; private set; }
-        public TileDirection startDirection { get; set; }
-        public TileDirection endDirection { get; set; }
-
-        public GameObject tile { get; private set; }
 
         public Tile(Vector2 _position, TileType _tileType)
         {
             position = _position;
             tileType = _tileType;
-        }
-
-        public void SetTile(GameObject _tile)
-        {
-            tile = _tile;
         }
     }
 
@@ -55,6 +46,8 @@ public class TileSpawner : MonoBehaviour
         tiles.Add(new Tile(new Vector2(4, 1), TileType.Waypoint));
         tiles.Add(new Tile(new Vector2(4, 0), TileType.Path));
         tiles.Add(new Tile(new Vector2(4, -1), TileType.Path));
+        tiles.Add(new Tile(new Vector2(4, -2), TileType.Waypoint));
+        tiles.Add(new Tile(new Vector2(5, -2), TileType.Path));
 
         SpawnTiles();
     }
@@ -108,7 +101,7 @@ public class TileSpawner : MonoBehaviour
             }
 
             //Spawn tile
-            tile.SetTile(Instantiate(tileObject, new Vector3(tile.position.x, 0, tile.position.y), Quaternion.Euler(tile.rotation.x, tile.rotation.y, 0)));
+            Instantiate(tileObject, new Vector3(tile.position.x, 0, tile.position.y), Quaternion.Euler(tile.rotation.x, tile.rotation.y, 0));
         }
 
         //Done spawning
