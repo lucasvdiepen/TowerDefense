@@ -15,10 +15,27 @@ public class Tile : MonoBehaviour
 
     public TileType tileType;
 
+    private GameObject placedObject;
+
     public bool IsBuildable()
     {
         if (tileType == TileType.Buildable) return true;
-
         return false;
+    }
+
+    public void SelectTile()
+    {
+        if(IsBuildable())
+        {
+            //Select tile and show tower upgrade path
+        }
+    }
+
+    public void BuildTile()
+    {
+        if(IsBuildable())
+        {
+            //Build tile
+        }
     }
 }
