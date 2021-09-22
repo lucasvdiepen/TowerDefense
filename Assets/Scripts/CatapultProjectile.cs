@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CatapultProjectile2 : MonoBehaviour
+public class CatapultProjectile : MonoBehaviour
 {
     public float travelTime = 2f;
     public float height = 5f;
 
-    private Transform target;
+    private Vector3 target;
     private Vector3 startPosition;
 
     private float timeElapsed = 0f;
@@ -18,7 +18,7 @@ public class CatapultProjectile2 : MonoBehaviour
         startPosition = transform.position;
     }
 
-    public void Spawn(Transform _target)
+    public void StartProjectile(Vector3 _target)
     {
         target = _target;
     }
@@ -27,7 +27,7 @@ public class CatapultProjectile2 : MonoBehaviour
     {
         if (timeElapsed <= travelTime)
         {
-            transform.position = Parabola(startPosition, target.position, height, timeElapsed / travelTime);
+            transform.position = Parabola(startPosition, target, height, timeElapsed / travelTime);
             timeElapsed += Time.deltaTime;
         }
     }

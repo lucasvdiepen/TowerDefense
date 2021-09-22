@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public float damage= 5f;
+    public float damage = 5f;
     public float range = 5f;
     public float fireRate = 0.2f;
 
     public float turnSpeed = 5f;
 
     public Transform weapon;
-    public GameObject bullet;
     public Transform shootPoint;
 
-    private Vector3 target = Vector3.zero;
+    public MonoBehaviour towerScript;
+
+    [HideInInspector]
+    public Vector3 target = Vector3.zero;
 
     private float lastShootTime = 0f;
 
@@ -63,8 +65,7 @@ public class Tower : MonoBehaviour
         {
             lastShootTime = Time.time;
 
-            GameObject newBullet = Instantiate(bullet, shootPoint.position, shootPoint.rotation);
-            newBullet.GetComponent<Bullet>().StartBullet(target);
+            towerScript.Invoke("Shoot", 0f);
         }
     }
 

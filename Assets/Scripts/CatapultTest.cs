@@ -12,7 +12,7 @@ public class CatapultTest : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             GameObject spawnedProjectile = Instantiate(catapultProjectile, transform.position, Quaternion.identity);
-            spawnedProjectile.GetComponent<CatapultProjectile2>().Spawn(catapultTarget);
+            spawnedProjectile.GetComponent<CatapultProjectile>().StartProjectile(catapultTarget.position);
         }
     }
 }
