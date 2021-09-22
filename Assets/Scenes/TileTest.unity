@@ -262,6 +262,12 @@ MonoBehaviour:
   pathTile: {fileID: 3282365857036213187, guid: c5ace35485580a646bd1dd685b3e7251, type: 3}
   waypointTile: {fileID: 9135797563266223809, guid: 4858ab063b27b77469b88af530a9eb07, type: 3}
   spawnpointTile: {fileID: 7631485624507232634, guid: 49a1b95194d1dcc43b35af8f310f0a87, type: 3}
+  buildableTile: {fileID: 165918762511944657, guid: b541a080f232c2d418c0f75a5d35b56f, type: 3}
+  defaultTiles:
+  - {fileID: 2453140788971157972, guid: 5a9f89fcb76b5104babad2722c599f32, type: 3}
+  - {fileID: 2453140788971157972, guid: 2351e12b1370b1445a2471563f69489a, type: 3}
+  - {fileID: 2453140788971157972, guid: 3bc813497d039184bbb099d1a6126673, type: 3}
+  - {fileID: 2453140788971157972, guid: fed2de0a64c3dc34e81788ef5044e547, type: 3}
 --- !u!1 &1958823440
 GameObject:
   m_ObjectHideFlags: 0

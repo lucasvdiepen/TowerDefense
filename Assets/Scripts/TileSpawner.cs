@@ -8,6 +8,8 @@ public class TileSpawner : MonoBehaviour
     public GameObject pathTile;
     public GameObject waypointTile;
     public GameObject spawnpointTile;
+    public GameObject buildableTile;
+    public GameObject[] defaultTiles;
 
     public enum TileDirection
     {
@@ -48,6 +50,10 @@ public class TileSpawner : MonoBehaviour
         tiles.Add(new Tile(new Vector2(4, -1), TileType.Path));
         tiles.Add(new Tile(new Vector2(4, -2), TileType.Waypoint));
         tiles.Add(new Tile(new Vector2(5, -2), TileType.Path));
+        tiles.Add(new Tile(new Vector2(2, 2), TileType.Buildable));
+        tiles.Add(new Tile(new Vector2(3, 2), TileType.Default));
+        tiles.Add(new Tile(new Vector2(4, 2), TileType.Default));
+        tiles.Add(new Tile(new Vector2(5, 2), TileType.Default));
 
         SpawnTiles();
     }
@@ -98,6 +104,14 @@ public class TileSpawner : MonoBehaviour
                 if (pathDirections.Contains(TileDirection.Bottom) && pathDirections.Contains(TileDirection.Left)) tile.rotation = new Vector2(0, 270);
 
                 tileObject = waypointTile;
+            }
+            else if(tile.tileType == TileType.Buildable)
+            {
+                tileObject = buildableTile;
+            }
+            else if (tile.tileType == TileType.Default)
+            {
+                tileObject = defaultTiles[Random.Range(0, defaultTiles.Length)];
             }
 
             //Spawn tile
