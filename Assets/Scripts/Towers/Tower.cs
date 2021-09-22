@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public float damage = 5f;
+    public int damage = 5;
     public float range = 5f;
     public float fireRate = 0.2f;
 
@@ -33,7 +33,7 @@ public class Tower : MonoBehaviour
     {
         target = Vector3.zero;
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemies = FindObjectOfType<EnemySpawner>().enemies.ToArray();
 
         float shortestDistance = Mathf.Infinity;
 

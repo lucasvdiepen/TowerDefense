@@ -30,7 +30,7 @@ public class CatapultTower : MonoBehaviour
     private void FireBullet()
     {
         GameObject newBullet = Instantiate(bullet, towerScript.shootPoint.position, towerScript.shootPoint.rotation);
-        newBullet.GetComponent<CatapultProjectile>().StartProjectile(towerScript.target);
+        newBullet.GetComponent<CatapultProjectile>().StartProjectile(towerScript.target, 1f, towerScript.damage);
     }
 
     private void Update()

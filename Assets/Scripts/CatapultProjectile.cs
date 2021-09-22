@@ -13,14 +13,18 @@ public class CatapultProjectile : MonoBehaviour
 
     private float timeElapsed = 0f;
 
+    private float explosionRange = 1f;
+    private int damage = 5;
+
     private void OnEnable()
     {
         startPosition = transform.position;
     }
 
-    public void StartProjectile(Vector3 _target)
+    public void StartProjectile(Vector3 _target, float _explosionRange, int _damage)
     {
         target = _target;
+        damage = _damage;
     }
 
     private void Update()
@@ -30,6 +34,21 @@ public class CatapultProjectile : MonoBehaviour
             transform.position = Parabola(startPosition, target, height, timeElapsed / travelTime);
             timeElapsed += Time.deltaTime;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GameObject[] enemies = FindObjectOfType<EnemySpawner>().enemies.ToArray();
+        foreach(GameObject enemy in enemies)
+        {
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            if(explosionRange <= distanceToEnemy)
+            {
+                enemy.GetComponent<Health>().TakeDamage(damage);
+            }
+        }
+
+        Destroy(gameObject);
     }
 
     public static Vector3 Parabola(Vector3 start, Vector3 end, float height, float t)
