@@ -29,11 +29,10 @@ public class CatapultProjectile : MonoBehaviour
 
     private void Update()
     {
-        if (timeElapsed <= travelTime)
-        {
-            transform.position = Parabola(startPosition, target, height, timeElapsed / travelTime);
-            timeElapsed += Time.deltaTime;
-        }
+        if (transform.position.y <= -10f) Destroy(gameObject);
+
+        transform.position = Parabola(startPosition, target, height, timeElapsed / travelTime);
+        timeElapsed += Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
