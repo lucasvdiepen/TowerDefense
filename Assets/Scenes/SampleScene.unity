@@ -220,8 +220,21 @@ MonoBehaviour:
   turnSpeed: 5
   weapon: {fileID: 1130519655}
   shootPoint: {fileID: 655040373}
-  towerScript: {fileID: 0}
+  towerScript: {fileID: 382175703}
   target: {x: 0, y: 0, z: 0}
+--- !u!114 &382175703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382175700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7b3924c0b472c468bf21ae77ceeaf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 5031445049440203007, guid: 6b65924a60dc9844584447e186996e14, type: 3}
 --- !u!1 &655040372
 GameObject:
   m_ObjectHideFlags: 0
