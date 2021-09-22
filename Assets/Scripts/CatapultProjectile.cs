@@ -36,8 +36,10 @@ public class CatapultProjectile : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Catapult projectile detected collision with: " + collision.transform.name);
+
         GameObject[] enemies = FindObjectOfType<EnemySpawner>().enemies.ToArray();
         foreach(GameObject enemy in enemies)
         {
