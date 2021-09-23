@@ -17,5 +17,9 @@ public class EnemySpawner : MonoBehaviour
         spawnPoint = FindObjectOfType<Spawnpoint>().GetPosition();
 
         enemies.Add(Instantiate(enemyObjects[0], spawnPoint, Quaternion.identity));
+        enemies.Add(Instantiate(enemyObjects[0], spawnPoint, Quaternion.identity));
+        enemies.Add(Instantiate(enemyObjects[0], spawnPoint, Quaternion.identity));
+        enemies.Add(Instantiate(enemyObjects[0], spawnPoint, Quaternion.identity));
+        enemies.Add(Instantiate(enemyObjects[0], spawnPoint, Quaternion.identity));
     }
 }

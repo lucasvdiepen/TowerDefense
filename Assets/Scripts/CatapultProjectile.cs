@@ -24,6 +24,7 @@ public class CatapultProjectile : MonoBehaviour
     public void StartProjectile(Vector3 _target, float _explosionRange, int _damage)
     {
         target = _target;
+        explosionRange = _explosionRange;
         damage = _damage;
     }
 
@@ -35,6 +36,12 @@ public class CatapultProjectile : MonoBehaviour
         timeElapsed += Time.deltaTime;
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRange);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Catapult projectile detected collision with: " + collision.transform.name);
@@ -43,7 +50,7 @@ public class CatapultProjectile : MonoBehaviour
         foreach(GameObject enemy in enemies)
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if(explosionRange <= distanceToEnemy)
+            if(explosionRange >= distanceToEnemy)
             {
                 enemy.GetComponent<Health>().TakeDamage(damage);
             }
