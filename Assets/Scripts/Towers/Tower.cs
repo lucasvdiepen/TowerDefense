@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -33,7 +34,7 @@ public class Tower : MonoBehaviour
     {
         target = Vector3.zero;
 
-        GameObject[] enemies = FindObjectOfType<EnemySpawner>().enemies.ToArray();
+        GameObject[] enemies = FindObjectOfType<EnemySpawner>().enemies.Values.ToArray();
 
         float shortestDistance = Mathf.Infinity;
 

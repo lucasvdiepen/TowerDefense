@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CatapultProjectile : MonoBehaviour
@@ -46,7 +47,7 @@ public class CatapultProjectile : MonoBehaviour
     {
         Debug.Log("Catapult projectile detected collision with: " + collision.transform.name);
 
-        GameObject[] enemies = FindObjectOfType<EnemySpawner>().enemies.ToArray();
+        GameObject[] enemies = FindObjectOfType<EnemySpawner>().enemies.Values.ToArray();
         foreach(GameObject enemy in enemies)
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
