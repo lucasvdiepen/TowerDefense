@@ -44,6 +44,27 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    public Vector3? GetPredictedPosition(float timeInSeconds)
+    {
+        Vector3 previousWaypoint = transform.position;
+        int waypointId = waypointsCount;
+
+        while(true)
+        {
+            Vector3? nextWaypoint = GetNextWaypoint(waypointId);
+            if (nextWaypoint == null) return null;
+
+            float distanceToWaypoint = Vector3.Distance(previousWaypoint, (Vector3)nextWaypoint);
+            float timeToWaypoint = distanceToWaypoint / speed;
+
+            if (timeInSeconds < timeToWaypoint) return Vector3.MoveTowards(previousWaypoint, (Vector3)nextWaypoint, speed * timeInSeconds);
+
+            timeInSeconds -= timeToWaypoint;
+            waypointId++;
+            previousWaypoint = (Vector3)nextWaypoint;
+        }
+    }
+
     private Vector3? GetNextWaypoint(int waypointId)
     {
         Waypoint[] waypoints = FindObjectsOfType<Waypoint>();

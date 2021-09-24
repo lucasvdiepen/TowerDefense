@@ -17,7 +17,7 @@ public class Tower : MonoBehaviour
     public MonoBehaviour towerScript;
 
     [HideInInspector]
-    public Vector3 target = Vector3.zero;
+    public GameObject target;
 
     private float lastShootTime = 0f;
 
@@ -32,7 +32,7 @@ public class Tower : MonoBehaviour
 
     private void UpdateTarget()
     {
-        target = Vector3.zero;
+        target = null;
 
         GameObject[] enemies = FindObjectOfType<EnemySpawner>().enemies.Values.ToArray();
 
@@ -45,7 +45,7 @@ public class Tower : MonoBehaviour
             {
                 if(distanceToEnemy < shortestDistance)
                 {
-                    target = enemy.transform.position;
+                    target = enemy;
                     shortestDistance = distanceToEnemy;
                 }
             }
@@ -54,15 +54,18 @@ public class Tower : MonoBehaviour
 
     private void RotateToTarget()
     {
-        Vector3 dir = target - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Lerp(weapon.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        weapon.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        if(target != null)
+        {
+            Vector3 dir = target.transform.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(dir);
+            Vector3 rotation = Quaternion.Lerp(weapon.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+            weapon.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
     }
 
     private void Shoot()
     {
-        if(target != Vector3.zero && (Time.time > (lastShootTime + fireRate)))
+        if (target != null && (Time.time > (lastShootTime + fireRate)))
         {
             lastShootTime = Time.time;
 

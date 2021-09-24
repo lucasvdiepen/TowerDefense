@@ -16,6 +16,6 @@ public class CannonTower : MonoBehaviour
     public void Shoot()
     {
         GameObject newBullet = Instantiate(bullet, towerScript.shootPoint.position, towerScript.shootPoint.rotation);
-        newBullet.GetComponent<Bullet>().StartBullet(towerScript.target);
+        newBullet.GetComponent<Bullet>().StartBullet(towerScript.target.transform.position);
     }
 }

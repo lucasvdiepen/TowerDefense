@@ -7,6 +7,7 @@ public class CatapultTower : MonoBehaviour
     public Animator animator;
     public GameObject bullet;
 
+    public float travelTime = 2f;
     public float shootDelay = 0.8f;
 
     private Tower towerScript;
@@ -21,6 +22,18 @@ public class CatapultTower : MonoBehaviour
 
     public void Shoot()
     {
+        //Check if bullet has enough time
+        if(towerScript.target != null)
+        {
+            Vector3? predictedPosition = towerScript.target.GetComponent<EnemyMovement>().GetPredictedPosition(shootDelay + travelTime);
+            if (predictedPosition == null)
+            {
+                //Add enemy to ignore list
+                Debug.Log("Add enemy to ignore list");
+                return;
+            }
+        }
+
         animator.SetTrigger("Shoot");
 
         shootStartTime = Time.time;
@@ -29,8 +42,14 @@ public class CatapultTower : MonoBehaviour
 
     private void FireBullet()
     {
-        GameObject newBullet = Instantiate(bullet, towerScript.shootPoint.position, towerScript.shootPoint.rotation);
-        newBullet.GetComponent<CatapultProjectile>().StartProjectile(towerScript.target, 1f, towerScript.damage);
+        if(towerScript.target != null)
+        {
+            Vector3? predictedPosition = towerScript.target.GetComponent<EnemyMovement>().GetPredictedPosition(travelTime);
+            if (predictedPosition == null) return;
+
+            GameObject newBullet = Instantiate(bullet, towerScript.shootPoint.position, towerScript.shootPoint.rotation);
+            newBullet.GetComponent<CatapultProjectile>().StartProjectile((Vector3)predictedPosition, travelTime, 1f, towerScript.damage);
+        }
     }
 
     private void Update()

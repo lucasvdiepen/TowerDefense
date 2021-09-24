@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class CatapultProjectile : MonoBehaviour
 {
-    public float travelTime = 2f;
     public float height = 5f;
 
     private Vector3 target;
@@ -16,15 +15,17 @@ public class CatapultProjectile : MonoBehaviour
 
     private float explosionRange = 1f;
     private int damage = 5;
+    private float travelTime = 2f;
 
     private void OnEnable()
     {
         startPosition = transform.position;
     }
 
-    public void StartProjectile(Vector3 _target, float _explosionRange, int _damage)
+    public void StartProjectile(Vector3 _target, float _travelTime, float _explosionRange, int _damage)
     {
         target = _target;
+        travelTime = _travelTime;
         explosionRange = _explosionRange;
         damage = _damage;
     }
