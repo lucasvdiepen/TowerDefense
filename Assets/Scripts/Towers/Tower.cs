@@ -21,6 +21,8 @@ public class Tower : MonoBehaviour
 
     private float lastShootTime = 0f;
 
+    private List<int> ignoreList = new List<int>();
+
     private void Update()
     {
         UpdateTarget();
@@ -40,13 +42,16 @@ public class Tower : MonoBehaviour
 
         foreach(GameObject enemy in enemies)
         {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if(distanceToEnemy < range)
+            if(!ignoreList.Contains(enemy.GetComponent<EnemyMovement>().enemyId))
             {
-                if(distanceToEnemy < shortestDistance)
+                float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+                if (distanceToEnemy < range)
                 {
-                    target = enemy;
-                    shortestDistance = distanceToEnemy;
+                    if (distanceToEnemy < shortestDistance)
+                    {
+                        target = enemy;
+                        shortestDistance = distanceToEnemy;
+                    }
                 }
             }
         }
@@ -71,6 +76,16 @@ public class Tower : MonoBehaviour
 
             towerScript.Invoke("Shoot", 0f);
         }
+    }
+
+    public void AddToIgnoreList(int enemyId)
+    {
+        if (!ignoreList.Contains(enemyId)) ignoreList.Add(enemyId);
+    }
+    
+    public void RemvoveFromIgnoreList(int enemyId)
+    {
+        if (ignoreList.Contains(enemyId)) ignoreList.Remove(enemyId);
     }
 
     private void OnDrawGizmosSelected()

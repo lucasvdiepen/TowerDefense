@@ -30,6 +30,7 @@ public class CatapultTower : MonoBehaviour
             {
                 //Add enemy to ignore list
                 Debug.Log("Add enemy to ignore list");
+                towerScript.AddToIgnoreList(towerScript.target.GetComponent<EnemyMovement>().enemyId);
                 return;
             }
         }

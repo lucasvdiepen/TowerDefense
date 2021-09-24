@@ -10,7 +10,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Vector3 target = Vector3.zero;
 
-    private int enemyId = -1;
+    public int enemyId = -1;
 
     private void Start()
     {
