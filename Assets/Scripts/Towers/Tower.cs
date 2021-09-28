@@ -16,8 +16,12 @@ public class Tower : MonoBehaviour
 
     public MonoBehaviour towerScript;
 
+    private int previousTargetId = -1;
+
     [HideInInspector]
     public GameObject target;
+
+    private Vector3? priorityTarget;
 
     private float lastShootTime = 0f;
 
@@ -55,17 +59,64 @@ public class Tower : MonoBehaviour
                 }
             }
         }
+
+        if (target != null)
+        {
+            if(target.GetComponent<EnemyMovement>().enemyId != previousTargetId)
+            {
+                towerScript.Invoke("OnTarget", 0f);
+                previousTargetId = target.GetComponent<EnemyMovement>().enemyId;
+            }
+        }
+        else previousTargetId = -1;
     }
 
     private void RotateToTarget()
     {
-        if(target != null)
+        Vector3 rotateTarget = Vector3.zero;
+
+        if(priorityTarget != null)
         {
-            Vector3 dir = target.transform.position - transform.position;
-            Quaternion lookRotation = Quaternion.LookRotation(dir);
-            Vector3 rotation = Quaternion.Lerp(weapon.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-            weapon.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            rotateTarget = (Vector3)priorityTarget;
         }
+        else
+        {
+            if (target != null)
+            {
+                rotateTarget = target.transform.position;
+            }
+            else return;
+        }
+
+        Vector3 dir = rotateTarget - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(weapon.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        weapon.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+    }
+
+    public void SetPriorityTarget(Vector3 target)
+    {
+        priorityTarget = target;
+    }
+
+    private void RemovePriorityTarget()
+    {
+        priorityTarget = null;
+    }
+
+    public float GetTimeBeforeShoot()
+    {
+        float time = fireRate - (Time.time - lastShootTime);
+        if (time > 0) return time;
+        else return 0;
+    }
+
+    public bool HasNoTimeToHit(float travelTime)
+    {
+        Vector3? predictedPosition = target.GetComponent<EnemyMovement>().GetPredictedPosition(travelTime);
+        if (predictedPosition == null) return true;
+
+        return false;
     }
 
     private void Shoot()
@@ -74,13 +125,20 @@ public class Tower : MonoBehaviour
         {
             lastShootTime = Time.time;
 
+            RemovePriorityTarget();
+
+            previousTargetId = -1;
+
             towerScript.Invoke("Shoot", 0f);
         }
     }
 
-    public void AddToIgnoreList(int enemyId)
+    public void AddToIgnoreList(int enemyId, bool resetDelay)
     {
+        if (resetDelay) lastShootTime = 0;
         if (!ignoreList.Contains(enemyId)) ignoreList.Add(enemyId);
+
+        UpdateTarget();
     }
     
     public void RemvoveFromIgnoreList(int enemyId)

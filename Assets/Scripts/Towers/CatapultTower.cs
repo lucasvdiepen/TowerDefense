@@ -8,6 +8,8 @@ public class CatapultTower : MonoBehaviour
     public GameObject bullet;
 
     public float travelTime = 2f;
+
+    //Animation delay
     public float shootDelay = 0.8f;
 
     private Tower towerScript;
@@ -20,6 +22,18 @@ public class CatapultTower : MonoBehaviour
         towerScript = GetComponent<Tower>();
     }
 
+    public void OnTarget()
+    {
+        float timeBeforeShoot = towerScript.GetTimeBeforeShoot();
+        Debug.Log("Time before shoot: " + timeBeforeShoot);
+        if (towerScript.HasNoTimeToHit(timeBeforeShoot + shootDelay + travelTime))
+        {
+            Debug.Log("Ignore enemy before shoot");
+            //Should ignore after shot
+            towerScript.AddToIgnoreList(towerScript.target.GetComponent<EnemyMovement>().enemyId, false);
+        }
+    }
+
     public void Shoot()
     {
         //Check if bullet has enough time
@@ -29,16 +43,18 @@ public class CatapultTower : MonoBehaviour
             if (predictedPosition == null)
             {
                 //Add enemy to ignore list
-                Debug.Log("Add enemy to ignore list");
-                towerScript.AddToIgnoreList(towerScript.target.GetComponent<EnemyMovement>().enemyId);
+                towerScript.AddToIgnoreList(towerScript.target.GetComponent<EnemyMovement>().enemyId, true);
                 return;
             }
+
+            //Rotate to predicted position
+            towerScript.SetPriorityTarget((Vector3)predictedPosition);
+
+            animator.SetTrigger("Shoot");
+
+            shootStartTime = Time.time;
+            shoot = true;
         }
-
-        animator.SetTrigger("Shoot");
-
-        shootStartTime = Time.time;
-        shoot = true;
     }
 
     private void FireBullet()

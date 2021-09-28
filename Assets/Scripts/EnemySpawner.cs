@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
         spawnPoint = FindObjectOfType<Spawnpoint>().GetPosition();
 
         SpawnEnemy();
+        SpawnEnemy();
     }
 
     private void SpawnEnemy()
