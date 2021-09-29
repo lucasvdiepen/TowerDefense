@@ -12,12 +12,16 @@ public class CatapultTower : MonoBehaviour
     //Animation delay
     public float shootDelay = 0.8f;
 
+    public float afterShootDelay = 0.4f;
+
     private Tower towerScript;
 
     private GameObject selectedTarget = null;
 
     private bool shoot = false;
+    private bool afterShoot = false;
     private float shootStartTime = 0f;
+    private float afterShootTime = 0f;
 
     private void Start()
     {
@@ -73,6 +77,9 @@ public class CatapultTower : MonoBehaviour
         }
 
         selectedTarget = null;
+
+        afterShootTime = Time.time;
+        afterShoot = true;
     }
 
     private void Update()
@@ -81,6 +88,12 @@ public class CatapultTower : MonoBehaviour
         {
             FireBullet();
             shoot = false;
+        }
+
+        if(afterShoot && Time.time > (afterShootTime + afterShootDelay))
+        {
+            towerScript.RemovePriorityTarget();
+            afterShoot = false;
         }
     }
 }

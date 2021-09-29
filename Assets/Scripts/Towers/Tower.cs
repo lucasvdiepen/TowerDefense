@@ -99,7 +99,7 @@ public class Tower : MonoBehaviour
         priorityTarget = target;
     }
 
-    private void RemovePriorityTarget()
+    public void RemovePriorityTarget()
     {
         priorityTarget = null;
     }
