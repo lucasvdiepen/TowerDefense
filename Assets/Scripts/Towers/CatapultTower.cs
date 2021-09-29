@@ -14,6 +14,8 @@ public class CatapultTower : MonoBehaviour
 
     private Tower towerScript;
 
+    private GameObject selectedTarget = null;
+
     private bool shoot = false;
     private float shootStartTime = 0f;
 
@@ -47,6 +49,8 @@ public class CatapultTower : MonoBehaviour
                 return;
             }
 
+            selectedTarget = towerScript.target;
+
             //Rotate to predicted position
             towerScript.SetPriorityTarget((Vector3)predictedPosition);
 
@@ -59,14 +63,16 @@ public class CatapultTower : MonoBehaviour
 
     private void FireBullet()
     {
-        if(towerScript.target != null)
+        if(selectedTarget != null)
         {
-            Vector3? predictedPosition = towerScript.target.GetComponent<EnemyMovement>().GetPredictedPosition(travelTime);
+            Vector3? predictedPosition = selectedTarget.GetComponent<EnemyMovement>().GetPredictedPosition(travelTime);
             if (predictedPosition == null) return;
 
             GameObject newBullet = Instantiate(bullet, towerScript.shootPoint.position, towerScript.shootPoint.rotation);
             newBullet.GetComponent<CatapultProjectile>().StartProjectile((Vector3)predictedPosition, travelTime, 1f, towerScript.damage);
         }
+
+        selectedTarget = null;
     }
 
     private void Update()
