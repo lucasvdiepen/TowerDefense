@@ -154,6 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyObjects:
   - {fileID: 1480171662513721842, guid: f30f6ef042bd43e438f10a56fcdf6f1e, type: 3}
+  waves: 03000000050000000a000000
+  spawnDelay: 0.4
+  waveDelay: 5
 --- !u!4 &377688982
 Transform:
   m_ObjectHideFlags: 0
@@ -1154,7 +1157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &2038907952
 ParticleSystemRenderer:
   serializedVersion: 6

@@ -31,10 +31,10 @@ public class CatapultTower : MonoBehaviour
     public void OnTarget()
     {
         float timeBeforeShoot = towerScript.GetTimeBeforeShoot();
-        Debug.Log("Time before shoot: " + timeBeforeShoot);
+        //Debug.Log("Time before shoot: " + timeBeforeShoot);
         if (towerScript.HasNoTimeToHit(timeBeforeShoot + shootDelay + travelTime))
         {
-            Debug.Log("Ignore enemy before shoot");
+            //Debug.Log("Ignore enemy before shoot");
             //Should ignore after shot???
             towerScript.AddToIgnoreList(towerScript.target.GetComponent<EnemyMovement>().enemyId, false);
         }
