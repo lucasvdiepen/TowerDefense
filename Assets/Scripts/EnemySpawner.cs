@@ -75,7 +75,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void WavesDone()
     {
-
+        Debug.Log("WavesDone");
     }
 
     private void SpawnEnemy()
