@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class CatapultProjectile : MonoBehaviour
 {
+    public GameObject explosionParticle;
+
     public float height = 5f;
 
     private Vector3 target;
@@ -57,6 +59,9 @@ public class CatapultProjectile : MonoBehaviour
                 enemy.GetComponent<Health>().TakeDamage(damage);
             }
         }
+
+        GameObject newExplosion = Instantiate(explosionParticle, collision.contacts[0].point, Quaternion.identity);
+        Destroy(newExplosion, 3f);
 
         Destroy(gameObject);
     }
