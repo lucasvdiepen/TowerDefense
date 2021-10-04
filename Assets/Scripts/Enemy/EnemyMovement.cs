@@ -10,16 +10,9 @@ public class EnemyMovement : MonoBehaviour
 
     private Vector3 target = Vector3.zero;
 
-    public int enemyId = -1;
-
     private void Start()
     {
         target = (Vector3)GetNextWaypoint(waypointsCount);
-    }
-
-    public void StartEnemy(int _enemyId)
-    {
-        enemyId = _enemyId;
     }
 
     private void Update()
@@ -38,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
                 Debug.Log("Enemy reached end");
 
                 //For now just destroy itself
-                FindObjectOfType<EnemySpawner>().DestroyEnemy(enemyId);
+                FindObjectOfType<EnemySpawner>().DestroyEnemy(GetComponent<EnemyID>().GetID());
             }
             else target = (Vector3)newWaypoint;
         }

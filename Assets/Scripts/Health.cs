@@ -19,6 +19,7 @@ public class Health : MonoBehaviour
         if(health <= 0)
         {
             //Enemy died
+            FindObjectOfType<EnemySpawner>().DestroyEnemy(GetComponent<EnemyID>().GetID());
         }
     }
 }

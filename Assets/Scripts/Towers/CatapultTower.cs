@@ -36,7 +36,7 @@ public class CatapultTower : MonoBehaviour
         {
             //Debug.Log("Ignore enemy before shoot");
             //Should ignore after shot???
-            towerScript.AddToIgnoreList(towerScript.target.GetComponent<EnemyMovement>().enemyId, false);
+            towerScript.AddToIgnoreList(towerScript.target.GetComponent<EnemyID>().GetID(), false);
         }
     }
 
@@ -49,7 +49,7 @@ public class CatapultTower : MonoBehaviour
             if (predictedPosition == null)
             {
                 //Add enemy to ignore list
-                towerScript.AddToIgnoreList(towerScript.target.GetComponent<EnemyMovement>().enemyId, true);
+                towerScript.AddToIgnoreList(towerScript.target.GetComponent<EnemyID>().GetID(), true);
                 return;
             }
 

@@ -46,7 +46,7 @@ public class Tower : MonoBehaviour
 
         foreach(GameObject enemy in enemies)
         {
-            if(!ignoreList.Contains(enemy.GetComponent<EnemyMovement>().enemyId))
+            if(!ignoreList.Contains(enemy.GetComponent<EnemyID>().GetID()))
             {
                 float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
                 if (distanceToEnemy < range)
@@ -62,10 +62,11 @@ public class Tower : MonoBehaviour
 
         if (target != null)
         {
-            if(target.GetComponent<EnemyMovement>().enemyId != previousTargetId)
+            int targetId = target.GetComponent<EnemyID>().GetID();
+            if(targetId != previousTargetId)
             {
                 towerScript.Invoke("OnTarget", 0f);
-                previousTargetId = target.GetComponent<EnemyMovement>().enemyId;
+                previousTargetId = targetId;
             }
         }
         else previousTargetId = -1;

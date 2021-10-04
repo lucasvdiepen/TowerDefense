@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EnemyID : MonoBehaviour
 {
-    private int id;
+    private int id = -1;
 
     public void Setup(int _id)
     {
         id = _id;
     }
 
-    public float GetID()
+    public int GetID()
     {
         return id;
     }

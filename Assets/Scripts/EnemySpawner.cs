@@ -81,7 +81,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         GameObject newEnemy = Instantiate(enemyObjects[0], spawnPoint, Quaternion.identity);
-        newEnemy.GetComponent<EnemyMovement>().StartEnemy(enemyCounter);
+        newEnemy.GetComponent<EnemyID>().Setup(enemyCounter);
 
         enemies.Add(enemyCounter, newEnemy);
 
