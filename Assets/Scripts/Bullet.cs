@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
 
     public float bulletDestroyTime = 5f;
 
+    private int damage = 0;
+
     private bool bulletStarted = false;
 
     private Vector3 target;
@@ -17,9 +19,10 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, bulletDestroyTime);
     }
 
-    public void StartBullet(Vector3 _target)
+    public void StartBullet(Vector3 _target, int _damage)
     {
         target = _target;
+        damage = _damage;
 
         transform.LookAt(target);
 
@@ -39,6 +42,7 @@ public class Bullet : MonoBehaviour
         if(collision.transform.tag == "Enemy")
         {
             //Deal damage
+            collision.gameObject.GetComponent<Health>().TakeDamage(damage);
         }
 
         Destroy(gameObject);
