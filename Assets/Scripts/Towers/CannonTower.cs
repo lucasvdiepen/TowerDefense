@@ -20,6 +20,6 @@ public class CannonTower : MonoBehaviour
         newBullet.GetComponent<Bullet>().StartBullet(towerScript.target.transform.position, towerScript.damage);
 
         GameObject newShootExplosion = Instantiate(shootExplosion, towerScript.shootPoint.position, Quaternion.identity);
-        //Destroy(newShootExplosion, 0.50f);
+        Destroy(newShootExplosion, 0.50f);
     }
 }
