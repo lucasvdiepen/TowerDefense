@@ -15,21 +15,33 @@ public class TowerSpawner : MonoBehaviour
 
     private GameObject previewTower;
 
+    private string previousButton = "";
+
     private void Update()
     {
         PreviewTower();
 
         if(Input.GetMouseButtonDown(0))
         {
+            Deselect();
+
             ClickTowerButton();
         }
 
         if(Input.GetMouseButtonUp(0))
         {
-            Deselect();
+            if(CheckButtonHit().transform.name != previousButton)
+            {
+                Deselect();
+            }
+            else
+            {
+                //Hide mouse follow image
+                FindObjectOfType<MouseFollow>().Deselect();
+            }
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             Deselect();
         }
@@ -118,6 +130,8 @@ public class TowerSpawner : MonoBehaviour
                 }
             }
 
+            previousButton = button.transform.name;
+
             FindObjectOfType<MouseFollow>().Select(button.GetComponent<RawImage>().texture);
         }
     }
@@ -149,5 +163,6 @@ public class TowerSpawner : MonoBehaviour
     {
         isSelected = false;
         selectedTowerId = -1;
+        FindObjectOfType<MouseFollow>().Deselect();
     }
 }
