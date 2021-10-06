@@ -14,7 +14,6 @@ public class MouseFollow : MonoBehaviour
     private void Start()
     {
         rawImage = GetComponent<RawImage>();
-        rawImage.gameObject.SetActive(false);
     }
 
     void Update()
@@ -38,13 +37,13 @@ public class MouseFollow : MonoBehaviour
     public void Select(Texture towerTexture)
     {
         isGrabbing = true;
-        rawImage.gameObject.SetActive(true);
+        rawImage.enabled = true;
         rawImage.texture = towerTexture;
     }
 
     public void Deselect()
     {
         isGrabbing = false;
-        rawImage.gameObject.SetActive(false);
+        rawImage.enabled = false;
     }
 }
