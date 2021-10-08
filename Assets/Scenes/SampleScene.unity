@@ -336,8 +336,8 @@ MonoBehaviour:
   buttons:
   - {fileID: 1879640511}
   - {fileID: 1855858465}
-  redTowerMaterial: {fileID: 0}
-  greenTowerMaterial: {fileID: 0}
+  redTowerMaterial: {fileID: 2100000, guid: c8ddd4369a5dfec44a3cec23eeaae750, type: 2}
+  greenTowerMaterial: {fileID: 2100000, guid: 38f85d44c1a387148a4e20aeeda06e5b, type: 2}
 --- !u!4 &176364060
 Transform:
   m_ObjectHideFlags: 0

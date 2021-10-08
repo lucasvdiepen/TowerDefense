@@ -10,15 +10,19 @@ public class TowerSpawner : MonoBehaviour
     public GameObject[] previewTowers;
     public GameObject[] buttons;
 
-    public Material redTowerMaterial;
-    public Material greenTowerMaterial;
-
+    public Material towerPreviewMaterial;
+    
     private bool isSelected = false;
     private int selectedTowerId = -1;
 
     private GameObject previewTower;
 
     private string previousButton = "";
+
+    private void Start()
+    {
+        towerPreviewMaterial.color = new Color(towerPreviewMaterial.color.r, towerPreviewMaterial.color.g, towerPreviewMaterial.color.b, 0.4f);
+    }
 
     private void Update()
     {
