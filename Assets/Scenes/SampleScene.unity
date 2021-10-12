@@ -308,6 +308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 176364060}
   - component: {fileID: 176364059}
+  - component: {fileID: 176364061}
   m_Layer: 0
   m_Name: TowerSpawner
   m_TagString: Untagged
@@ -331,13 +332,14 @@ MonoBehaviour:
   - {fileID: 2329706291052757473, guid: 0e1f25cdbe3b9cf448b9c02ba67302a7, type: 3}
   - {fileID: 5665025919504762893, guid: ceae29f5a95e6db43abc2eba7a6bb99e, type: 3}
   previewTowers:
-  - {fileID: 2329706291052757473, guid: 0e1f25cdbe3b9cf448b9c02ba67302a7, type: 3}
-  - {fileID: 5665025919504762893, guid: ceae29f5a95e6db43abc2eba7a6bb99e, type: 3}
+  - {fileID: 38088090153984739, guid: c13b13cd0cfb3b648b66428bbe63d45b, type: 3}
+  - {fileID: 1468974605423186437, guid: c74cc54f34e17114f82dfcbb7c26d768, type: 3}
   buttons:
   - {fileID: 1879640511}
   - {fileID: 1855858465}
-  redTowerMaterial: {fileID: 2100000, guid: c8ddd4369a5dfec44a3cec23eeaae750, type: 2}
-  greenTowerMaterial: {fileID: 2100000, guid: 38f85d44c1a387148a4e20aeeda06e5b, type: 2}
+  towerPreviewMaterial: {fileID: 2100000, guid: c8ddd4369a5dfec44a3cec23eeaae750, type: 2}
+  redPreviewColor: {r: 1, g: 0, b: 0, a: 0.6666667}
+  greenPreviewColor: {r: 0.056218408, g: 0.8396226, b: 0, a: 0.6666667}
 --- !u!4 &176364060
 Transform:
   m_ObjectHideFlags: 0
@@ -353,6 +355,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &176364061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176364058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6879d4bc299859046bf44c697a65bacd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerPreviewMaterial: {fileID: 2100000, guid: c8ddd4369a5dfec44a3cec23eeaae750, type: 2}
+  lowestAlpha: 0.6
+  highestAlpha: 0.8
+  alphaChangeTime: 1
 --- !u!1 &377688980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1524,10 @@ PrefabInstance:
     - target: {fileID: 38088090153984739, guid: c13b13cd0cfb3b648b66428bbe63d45b, type: 3}
       propertyPath: m_Name
       value: CannonTowerPreview
+      objectReference: {fileID: 0}
+    - target: {fileID: 38088090153984739, guid: c13b13cd0cfb3b648b66428bbe63d45b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 850195468095682649, guid: c13b13cd0cfb3b648b66428bbe63d45b, type: 3}
       propertyPath: m_RootOrder

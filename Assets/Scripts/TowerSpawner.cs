@@ -11,6 +11,9 @@ public class TowerSpawner : MonoBehaviour
     public GameObject[] buttons;
 
     public Material towerPreviewMaterial;
+
+    public Color redPreviewColor;
+    public Color greenPreviewColor;
     
     private bool isSelected = false;
     private int selectedTowerId = -1;
@@ -19,9 +22,13 @@ public class TowerSpawner : MonoBehaviour
 
     private string previousButton = "";
 
+    private TowerPreviewFade towerPreviewFade;
+
     private void Start()
     {
-        towerPreviewMaterial.color = new Color(towerPreviewMaterial.color.r, towerPreviewMaterial.color.g, towerPreviewMaterial.color.b, 0.4f);
+        towerPreviewFade = GetComponent<TowerPreviewFade>();
+
+        //towerPreviewMaterial.color = new Color(towerPreviewMaterial.color.r, towerPreviewMaterial.color.g, towerPreviewMaterial.color.b, 0.4f);
     }
 
     private void Update()
@@ -56,12 +63,21 @@ public class TowerSpawner : MonoBehaviour
 
     private void DestroyPreviewTower()
     {
-        if (previewTower != null) Destroy(previewTower);
+        if (previewTower != null)
+        {
+            towerPreviewFade.StopFade();
+
+            Destroy(previewTower);
+        }
     }
 
-    private void SpawnPreviewTower(int towerId, Vector3 position)
+    private void SpawnPreviewTower(int towerId, GameObject tile)
     {
-        previewTower = Instantiate(previewTowers[selectedTowerId], position, Quaternion.identity);
+        Tile tileScript = tile.GetComponent<Tile>();
+
+        previewTower = Instantiate(previewTowers[selectedTowerId], tile.transform.position, Quaternion.identity);
+
+        towerPreviewFade.StartFade();
     }
 
     private void PreviewTower()
@@ -78,12 +94,12 @@ public class TowerSpawner : MonoBehaviour
                     {
                         DestroyPreviewTower();
 
-                        SpawnPreviewTower(selectedTowerId, tile.transform.position);
+                        SpawnPreviewTower(selectedTowerId, tile);
                     }
                 }
                 else
                 {
-                    SpawnPreviewTower(selectedTowerId, tile.transform.position);
+                    SpawnPreviewTower(selectedTowerId, tile);
                 }
             }
             else
