@@ -23,6 +23,11 @@ public class Tile : MonoBehaviour
         return false;
     }
 
+    public bool CanBuild()
+    {
+        return IsBuildable() && placedObject == null;
+    }
+
     public void SelectTile()
     {
         if(IsBuildable())

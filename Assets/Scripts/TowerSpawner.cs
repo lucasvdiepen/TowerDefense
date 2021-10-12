@@ -19,6 +19,7 @@ public class TowerSpawner : MonoBehaviour
     private int selectedTowerId = -1;
 
     private GameObject previewTower;
+    private GameObject selectedTile;
 
     private string previousButton = "";
 
@@ -65,15 +66,40 @@ public class TowerSpawner : MonoBehaviour
     {
         if (previewTower != null)
         {
+            selectedTile = null;
+
             towerPreviewFade.StopFade();
 
             Destroy(previewTower);
         }
     }
 
+    private void ChangePreviewTowerColor()
+    {
+
+    }
+
+    private void SetPreviewColor(bool canBuild)
+    {
+        if(canBuild) towerPreviewMaterial.color = greenPreviewColor;
+        else towerPreviewMaterial.color = redPreviewColor;
+    }
+
+    private bool CanBuild()
+    {
+        if(selectedTile != null)
+        {
+            return selectedTile.GetComponent<Tile>().CanBuild();
+        }
+
+        return false;
+    }
+
     private void SpawnPreviewTower(int towerId, GameObject tile)
     {
-        Tile tileScript = tile.GetComponent<Tile>();
+        selectedTile = tile;
+
+        SetPreviewColor(CanBuild());
 
         previewTower = Instantiate(previewTowers[selectedTowerId], tile.transform.position, Quaternion.identity);
 
