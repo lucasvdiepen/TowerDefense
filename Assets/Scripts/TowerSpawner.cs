@@ -28,8 +28,6 @@ public class TowerSpawner : MonoBehaviour
     private void Start()
     {
         towerPreviewFade = GetComponent<TowerPreviewFade>();
-
-        //towerPreviewMaterial.color = new Color(towerPreviewMaterial.color.r, towerPreviewMaterial.color.g, towerPreviewMaterial.color.b, 0.4f);
     }
 
     private void Update()
@@ -38,6 +36,8 @@ public class TowerSpawner : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0))
         {
+            PlaceTower();
+
             Deselect();
 
             ClickTowerButton();
@@ -45,12 +45,15 @@ public class TowerSpawner : MonoBehaviour
 
         if(Input.GetMouseButtonUp(0))
         {
-            if(CheckButtonHit().transform.name != previousButton)
+            GameObject buttonHit = CheckButtonHit();
+            if (buttonHit != null && buttonHit.transform.name != previousButton)
             {
                 Deselect();
             }
             else
             {
+                PlaceTower();
+
                 //Hide mouse follow image
                 FindObjectOfType<MouseFollow>().Deselect();
             }
@@ -72,11 +75,6 @@ public class TowerSpawner : MonoBehaviour
 
             Destroy(previewTower);
         }
-    }
-
-    private void ChangePreviewTowerColor()
-    {
-
     }
 
     private void SetPreviewColor(bool canBuild)
@@ -143,7 +141,10 @@ public class TowerSpawner : MonoBehaviour
     {
         if(isSelected)
         {
-            
+            if(selectedTile != null)
+            {
+                selectedTile.GetComponent<Tile>().BuildTile(towers[selectedTowerId]);
+            }
         }
     }
 

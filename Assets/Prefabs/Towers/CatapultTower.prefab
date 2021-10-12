@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658504357889409587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1365, z: -0.2644}
+  m_LocalPosition: {x: 0, y: 0.146, z: -0.259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4456340505599575234}
@@ -93,7 +93,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5032182849105957559}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &502976049388368853
 MeshFilter:
@@ -155,6 +155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7536442948208055473}
+  - component: {fileID: 7769975334681686310}
   m_Layer: 0
   m_Name: weapon_catapult
   m_TagString: Untagged
@@ -176,8 +177,27 @@ Transform:
   - {fileID: 4456340505599575234}
   - {fileID: 3258799234216719561}
   m_Father: {fileID: 5032182849105957559}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7769975334681686310
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2682500817501769289}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ef0ebc3ed9702134c96282fa467e2fee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3097378300973828021
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5032182849105957559}
   - component: {fileID: 4782645640146154851}
+  - component: {fileID: 1457533355}
   m_Layer: 0
   m_Name: CatapultTower
   m_TagString: Untagged
@@ -284,12 +305,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5665025919504762893}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.46, z: 7.94}
   m_LocalScale: {x: 1.9275, y: 1.9275, z: 1.9275}
   m_Children:
-  - {fileID: 7536442948208055473}
   - {fileID: 8267422386682465400}
+  - {fileID: 7536442948208055473}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -307,12 +328,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   range: 5
-  fireRate: 0.2
+  fireRate: 3
   turnSpeed: 5
-  weapon: {fileID: 0}
-  shootPoint: {fileID: 0}
-  towerScript: {fileID: 0}
-  target: {x: 0, y: 0, z: 0}
+  weapon: {fileID: 7536442948208055473}
+  shootPoint: {fileID: 2075887294409589509}
+  towerScript: {fileID: 1457533355}
+  target: {fileID: 0}
+--- !u!114 &1457533355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665025919504762893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09792c394f699e44eaf1d1ea12cbb619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7769975334681686310}
+  bullet: {fileID: 3706719464860221768, guid: 66d698409763a1b4992b8efc3f2f32bf, type: 3}
+  travelTime: 2
+  shootDelay: 0.9
+  afterShootDelay: 0.4
 --- !u!1 &8643147512083262249
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +478,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4413709279806074913, guid: 66d698409763a1b4992b8efc3f2f32bf, type: 3}
+    - {fileID: 182060881568255837, guid: 66d698409763a1b4992b8efc3f2f32bf, type: 3}
+    - {fileID: 3706719464860221774, guid: 66d698409763a1b4992b8efc3f2f32bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 66d698409763a1b4992b8efc3f2f32bf, type: 3}
 --- !u!4 &7495978459924523817 stripped
 Transform:

@@ -30,17 +30,18 @@ public class Tile : MonoBehaviour
 
     public void SelectTile()
     {
-        if(IsBuildable())
+        if (IsBuildable() && placedObject != null)
         {
             //Select tile and show tower upgrade path
         }
     }
 
-    public void BuildTile()
+    public void BuildTile(GameObject tower)
     {
-        if(IsBuildable())
+        if(CanBuild())
         {
             //Build tile
+            placedObject = Instantiate(tower, transform.position, Quaternion.identity);
         }
     }
 }
