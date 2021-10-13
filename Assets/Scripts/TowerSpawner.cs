@@ -46,16 +46,23 @@ public class TowerSpawner : MonoBehaviour
         if(Input.GetMouseButtonUp(0))
         {
             GameObject buttonHit = CheckButtonHit();
-            if (buttonHit != null && buttonHit.transform.name != previousButton)
+            if (buttonHit != null)
             {
-                Deselect();
+                if(buttonHit.transform.name != previousButton)
+                {
+                    Deselect();
+                }
+                else
+                {
+                    //Hide mouse follow image
+                    FindObjectOfType<MouseFollow>().Deselect();
+                }
             }
             else
             {
                 PlaceTower();
 
-                //Hide mouse follow image
-                FindObjectOfType<MouseFollow>().Deselect();
+                Deselect();
             }
         }
 
