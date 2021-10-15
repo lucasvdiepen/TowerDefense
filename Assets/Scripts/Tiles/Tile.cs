@@ -33,7 +33,13 @@ public class Tile : MonoBehaviour
         if (IsBuildable() && placedObject != null)
         {
             //Select tile and show tower upgrade path
+            placedObject.GetComponent<TowerSelect>().Select();
         }
+    }
+
+    public GameObject GetPlacedObject()
+    {
+        return placedObject;
     }
 
     public void BuildTile(GameObject tower)

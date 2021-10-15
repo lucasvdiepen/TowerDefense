@@ -14,8 +14,12 @@ public class TowerSpawner : MonoBehaviour
 
     public Color redPreviewColor;
     public Color greenPreviewColor;
+
+    public LayerMask spawnLayerMask;
     
-    private bool isSelected = false;
+    [HideInInspector]
+    public bool isSelected = false;
+
     private int selectedTowerId = -1;
 
     private GameObject previewTower;
@@ -160,7 +164,7 @@ public class TowerSpawner : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity))
+        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, spawnLayerMask))
         {
             if(hitInfo.transform.CompareTag("Tile"))
             {

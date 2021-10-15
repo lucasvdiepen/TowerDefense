@@ -27,6 +27,13 @@ public class Tower : MonoBehaviour
 
     private List<int> ignoreList = new List<int>();
 
+    private TowerRange towerRangeScript;
+
+    private void Start()
+    {
+        towerRangeScript = GetComponent<TowerRange>();
+    }
+
     private void Update()
     {
         UpdateTarget();
@@ -34,6 +41,8 @@ public class Tower : MonoBehaviour
         RotateToTarget();
 
         Shoot();
+
+        towerRangeScript.UpdateRangeImage(range);
     }
 
     private void UpdateTarget()
@@ -94,6 +103,8 @@ public class Tower : MonoBehaviour
         Vector3 rotation = Quaternion.Lerp(weapon.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         weapon.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
+
+    
 
     public void SetPriorityTarget(Vector3 target)
     {
