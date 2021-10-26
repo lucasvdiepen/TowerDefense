@@ -8,20 +8,16 @@ public class TowerSelectUI : MonoBehaviour
 
     public void OpenUI()
     {
-        animator.SetFloat("animationSpeed", 1f);
-        animator.SetTrigger("TriggerTowerSelect");
+        animator.SetTrigger("TowerSelectOpen");
     }
 
     public void CloseUI()
     {
-        animator.SetFloat("animationSpeed", -1f);
-        animator.SetTrigger("TriggerTowerSelect");
+        animator.SetTrigger("TowerSelectClose");
     }
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-
-        OpenUI();
     }
 }

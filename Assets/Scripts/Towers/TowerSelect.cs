@@ -16,6 +16,7 @@ public class TowerSelect : MonoBehaviour
         towerRangeScript.Show();
 
         //Show upgrade popup
+        FindObjectOfType<TowerSelectUI>().OpenUI();
     }
 
     public void Deselect()
@@ -23,5 +24,6 @@ public class TowerSelect : MonoBehaviour
         towerRangeScript.Hide();
 
         //Hide upgrade popup
+        FindObjectOfType<TowerSelectUI>().CloseUI();
     }
 }
