@@ -22,4 +22,9 @@ public class CannonTower : MonoBehaviour
         GameObject newShootExplosion = Instantiate(shootExplosion, towerScript.shootPoint.position, Quaternion.identity);
         Destroy(newShootExplosion, 0.50f);
     }
+
+    public void OnTarget()
+    {
+
+    }
 }

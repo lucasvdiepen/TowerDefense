@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TowerSelector : MonoBehaviour
 {
+    public LayerMask uiLayer;
+
     private TowerSelect currentTowerScript;
 
     private void Update()
@@ -12,11 +15,14 @@ public class TowerSelector : MonoBehaviour
         {
             if(!FindObjectOfType<TowerSpawner>().isSelected)
             {
-                DeselectTower();
+                if(!CheckUIHit())
+                {
+                    DeselectTower();
 
-                currentTowerScript = GetTowerScript();
+                    currentTowerScript = GetTowerScript();
 
-                SelectTower();
+                    SelectTower();
+                }
             }
         }
     }
@@ -50,5 +56,16 @@ public class TowerSelector : MonoBehaviour
         }
 
         return null;
+    }
+
+    private bool CheckUIHit()
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current) { position = Input.mousePosition };
+        var raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, raycastResults);
+
+        if (raycastResults.Count > 0) return true;
+
+        return false;
     }
 }
