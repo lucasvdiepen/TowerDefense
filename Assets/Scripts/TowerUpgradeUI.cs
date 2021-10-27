@@ -17,16 +17,28 @@ public class TowerUpgradeUI : MonoBehaviour
 
     public void OpenUI()
     {
-        animator.SetTrigger("TowerSelectOpen");
+        //animator.SetTrigger("TowerSelectOpen");
+        animator.SetBool("OpenTowerSelect", true);
     }
 
     public void CloseUI()
     {
-        animator.SetTrigger("TowerSelectClose");
+        //animator.SetTrigger("TowerSelectClose");
+        animator.SetBool("CloseTowerSelect", true);
     }
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+    }
+
+    public void OpenAnimationFinished()
+    {
+        animator.SetBool("OpenTowerSelect", false);
+    }
+
+    public void CloseAnimationFinished()
+    {
+        animator.SetBool("CloseTowerSelect", false);
     }
 }

@@ -17,11 +17,22 @@ public class TowerSelector : MonoBehaviour
             {
                 if(!CheckUIHit())
                 {
-                    DeselectTower();
+                    TowerSelect newTowerScript = GetTowerScript();
+                    if (newTowerScript != null)
+                    {
+                        if(!newTowerScript.isSelected)
+                        {
+                            DeselectTower();
 
-                    currentTowerScript = GetTowerScript();
+                            currentTowerScript = newTowerScript;
 
-                    SelectTower();
+                            SelectTower();
+                        }
+                    }
+                    else
+                    {
+                        DeselectTower();
+                    }
                 }
             }
         }
@@ -29,7 +40,10 @@ public class TowerSelector : MonoBehaviour
 
     public void SelectTower()
     {
-        if (currentTowerScript != null) currentTowerScript.Select();
+        if (currentTowerScript != null)
+        {
+            currentTowerScript.Select();
+        }
     }
 
     public void DeselectTower()

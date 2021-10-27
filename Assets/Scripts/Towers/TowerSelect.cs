@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TowerSelect : MonoBehaviour
 {
+    [HideInInspector] public bool isSelected = false;
+
     private TowerRange towerRangeScript;
 
     private void Start()
@@ -13,10 +15,15 @@ public class TowerSelect : MonoBehaviour
 
     public void Select()
     {
-        towerRangeScript.Show();
+        if(!isSelected)
+        {
+            isSelected = true;
 
-        //Show upgrade popup
-        FindObjectOfType<TowerUpgradeUI>().OpenUI();
+            towerRangeScript.Show();
+
+            //Show upgrade popup
+            FindObjectOfType<TowerUpgradeUI>().OpenUI();
+        }
     }
 
     public void Deselect()
@@ -25,5 +32,7 @@ public class TowerSelect : MonoBehaviour
 
         //Hide upgrade popup
         FindObjectOfType<TowerUpgradeUI>().CloseUI();
+
+        isSelected = false;
     }
 }

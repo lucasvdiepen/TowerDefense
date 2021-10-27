@@ -20,6 +20,7 @@ public class EnemySpawner : MonoBehaviour
     private int wave = -1;
     private int enemyWaveCount = 0;
     private bool waitingForWave = false;
+    private bool wavesDone = false;
 
     private void Start()
     {
@@ -75,7 +76,11 @@ public class EnemySpawner : MonoBehaviour
 
     private void WavesDone()
     {
-        Debug.Log("WavesDone");
+        if(!wavesDone)
+        {
+            wavesDone = true;
+            Debug.Log("WavesDone");
+        }
     }
 
     private void SpawnEnemy()
