@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,14 +42,14 @@ public class TileSpawner : MonoBehaviour
     public class MapData
     {
         public string game;
-        public List<List<TileData>> data;
+        public TileData[][] data;
     }
 
     [System.Serializable]
     public class TileData
     {
         public string name;
-        //public int count;
+        public int count = -1;
     }
 
     private List<Tile> tiles = new List<Tile>();
@@ -57,7 +59,7 @@ public class TileSpawner : MonoBehaviour
         LoadFromJson();
 
         //Test path
-        tiles.Add(new Tile(new Vector2(-1, 0), TileType.Spawnpoint));
+        /*tiles.Add(new Tile(new Vector2(-1, 0), TileType.Spawnpoint));
         tiles.Add(new Tile(new Vector2(0, 0), TileType.Path));
         tiles.Add(new Tile(new Vector2(1, 0), TileType.Path));
         tiles.Add(new Tile(new Vector2(2, 0), TileType.Waypoint));
@@ -71,16 +73,24 @@ public class TileSpawner : MonoBehaviour
         tiles.Add(new Tile(new Vector2(2, 2), TileType.Buildable));
         tiles.Add(new Tile(new Vector2(3, 2), TileType.Default));
         tiles.Add(new Tile(new Vector2(4, 2), TileType.Default));
-        tiles.Add(new Tile(new Vector2(5, 2), TileType.Default));
+        tiles.Add(new Tile(new Vector2(5, 2), TileType.Default));*/
 
         SpawnTiles();
     }
 
     private void LoadFromJson()
     {
-        MapData mapData = JsonUtility.FromJson<MapData>(jsonFile.text);
+        //MapData mapData = JsonUtility.FromJson<MapData>(jsonFile.text);
 
-        Debug.Log(mapData);
+        MapData mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text);
+
+        for(int y = 0; y < mapData.data.Length; y++)
+        {
+            for(int x = 0; x < mapData.data[y].Length; x++)
+            {
+                tiles.Add(new Tile(new Vector2(x, y), (TileType)Enum.Parse(typeof(TileType), mapData.data[y][x].name)));
+            }
+        }
     }
 
     private void SpawnTiles()
@@ -136,7 +146,7 @@ public class TileSpawner : MonoBehaviour
             }
             else if (tile.tileType == TileType.Default)
             {
-                tileObject = defaultTiles[Random.Range(0, defaultTiles.Length)];
+                tileObject = defaultTiles[UnityEngine.Random.Range(0, defaultTiles.Length)];
             }
 
             //Spawn tile
