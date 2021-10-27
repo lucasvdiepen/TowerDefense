@@ -1,0 +1,325 @@
+{
+    "game": "Generic game",
+    "data": [
+        [
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Spawnpoint"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            }
+        ],
+        [
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            }
+        ],
+        [
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            }
+        ],
+        [
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Waypoint"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Waypoint"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            }
+        ],
+        [
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            }
+        ],
+        [
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            }
+        ],
+        [
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Waypoint"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Waypoint"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            }
+        ],
+        [
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            }
+        ],
+        [
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            }
+        ],
+        [
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Endpoint"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            }
+        ]
+    ]
+}

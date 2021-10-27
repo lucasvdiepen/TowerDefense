@@ -268,6 +268,7 @@ MonoBehaviour:
   - {fileID: 2453140788971157972, guid: 2351e12b1370b1445a2471563f69489a, type: 3}
   - {fileID: 2453140788971157972, guid: 3bc813497d039184bbb099d1a6126673, type: 3}
   - {fileID: 2453140788971157972, guid: fed2de0a64c3dc34e81788ef5044e547, type: 3}
+  jsonFile: {fileID: 4900000, guid: 9210b3a42c81d5d4598abf964a47c117, type: 3}
 --- !u!1 &1958823440
 GameObject:
   m_ObjectHideFlags: 0

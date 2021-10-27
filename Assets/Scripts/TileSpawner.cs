@@ -11,6 +11,8 @@ public class TileSpawner : MonoBehaviour
     public GameObject buildableTile;
     public GameObject[] defaultTiles;
 
+    public TextAsset jsonFile;
+
     public enum TileDirection
     {
         Left,
@@ -34,10 +36,26 @@ public class TileSpawner : MonoBehaviour
         }
     }
 
+    [System.Serializable]
+    public class MapData
+    {
+        public string game;
+        public List<List<TileData>> data;
+    }
+
+    [System.Serializable]
+    public class TileData
+    {
+        public string name;
+        //public int count;
+    }
+
     private List<Tile> tiles = new List<Tile>();
 
     private void Start()
     {
+        LoadFromJson();
+
         //Test path
         tiles.Add(new Tile(new Vector2(-1, 0), TileType.Spawnpoint));
         tiles.Add(new Tile(new Vector2(0, 0), TileType.Path));
@@ -56,6 +74,13 @@ public class TileSpawner : MonoBehaviour
         tiles.Add(new Tile(new Vector2(5, 2), TileType.Default));
 
         SpawnTiles();
+    }
+
+    private void LoadFromJson()
+    {
+        MapData mapData = JsonUtility.FromJson<MapData>(jsonFile.text);
+
+        Debug.Log(mapData);
     }
 
     private void SpawnTiles()
