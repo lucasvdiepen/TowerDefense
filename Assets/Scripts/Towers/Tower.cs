@@ -32,6 +32,8 @@ public class Tower : MonoBehaviour
     private void Start()
     {
         towerRangeScript = GetComponent<TowerRange>();
+
+        UpdateRange();
     }
 
     private void Update()
@@ -41,8 +43,6 @@ public class Tower : MonoBehaviour
         RotateToTarget();
 
         Shoot();
-
-        towerRangeScript.UpdateRangeImage(range);
     }
 
     private void UpdateTarget()
@@ -104,7 +104,22 @@ public class Tower : MonoBehaviour
         weapon.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
-    
+    public void UpgradeRangeAmount(float newAmount)
+    {
+        //Upgrade range here
+
+        UpdateRange();
+    }
+
+    public void UpgradeDamageAmount(float newAmount)
+    {
+        //Upgrade damage here
+    }
+
+    private void UpdateRange()
+    {
+        towerRangeScript.UpdateRangeImage(range);
+    }
 
     public void SetPriorityTarget(Vector3 target)
     {

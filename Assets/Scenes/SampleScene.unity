@@ -1238,7 +1238,7 @@ MonoBehaviour:
   animationSpeed: 7
   rangeButton: {fileID: 784108346}
   damageButton: {fileID: 1112172878}
-  sellButton: {fileID: 0}
+  sellButton: {fileID: 1025261869}
   rangeUpgradePath:
   - {fileID: 2132001768}
   - {fileID: 923633419}
