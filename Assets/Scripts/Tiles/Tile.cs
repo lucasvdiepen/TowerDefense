@@ -10,6 +10,7 @@ public class Tile : MonoBehaviour
         Waypoint,
         Path,
         Buildable,
+        Endpoint,
         Default
     }
 

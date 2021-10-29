@@ -11,6 +11,7 @@ public class TileSpawner : MonoBehaviour
     public GameObject waypointTile;
     public GameObject spawnpointTile;
     public GameObject buildableTile;
+    public GameObject endpointTile;
     public GameObject[] defaultTiles;
 
     public TextAsset jsonFile;
@@ -29,12 +30,15 @@ public class TileSpawner : MonoBehaviour
     {
         public Vector2 position { get; private set; }
         public Vector2 rotation { get; set; }
-        public TileType tileType { get; private set; }
+        public TileType tileType { get; set; }
 
-        public Tile(Vector2 _position, TileType _tileType)
+        public int count { get; set; }
+
+        public Tile(Vector2 _position, TileType _tileType, int _count = -1)
         {
             position = _position;
             tileType = _tileType;
+            count = _count;
         }
     }
 
@@ -75,7 +79,44 @@ public class TileSpawner : MonoBehaviour
         tiles.Add(new Tile(new Vector2(4, 2), TileType.Default));
         tiles.Add(new Tile(new Vector2(5, 2), TileType.Default));*/
 
+        //Change the last waypoint
+        SetEndpoint();
+
         SpawnTiles();
+    }
+
+    private void SetEndpoint()
+    {
+        int highestWaypointNumber = -1;
+        int index = -1;
+
+        int endpointIndex = -1;
+
+        for (int i = 0; i < tiles.Count; i++)
+        {
+            Tile currentTile = tiles[i];
+
+            //if tiles has an endpoint don't set the last waypoint to endpoint
+            if (currentTile.tileType == TileType.Endpoint) endpointIndex = i;
+
+            if(currentTile.tileType == TileType.Waypoint)
+            {
+                if(currentTile.count > highestWaypointNumber)
+                {
+                    highestWaypointNumber = currentTile.count;
+                    index = i;
+                }
+            }
+        }
+
+        if(endpointIndex >= 0)
+        {
+            tiles[endpointIndex].count = highestWaypointNumber + 1;
+        }
+        else
+        {
+            tiles[index].tileType = TileType.Endpoint;
+        }
     }
 
     private void LoadFromJson()
@@ -88,7 +129,7 @@ public class TileSpawner : MonoBehaviour
         {
             for(int x = 0; x < mapData.data[y].Length; x++)
             {
-                tiles.Add(new Tile(new Vector2(x, y), (TileType)Enum.Parse(typeof(TileType), mapData.data[y][x].name)));
+                tiles.Add(new Tile(new Vector2(x, y), (TileType)Enum.Parse(typeof(TileType), mapData.data[y][x].name), mapData.data[y][x].count));
             }
         }
     }
@@ -140,6 +181,16 @@ public class TileSpawner : MonoBehaviour
 
                 tileObject = waypointTile;
             }
+            else if(tile.tileType == TileType.Endpoint)
+            {
+                List<TileDirection> pathDirections = GetNearPath(tile.position);
+                if (pathDirections.Contains(TileDirection.Top)) tile.rotation = new Vector2(0, 0);
+                if (pathDirections.Contains(TileDirection.Left)) tile.rotation = new Vector2(0, 270);
+                if (pathDirections.Contains(TileDirection.Right)) tile.rotation = new Vector2(0, 90);
+                if (pathDirections.Contains(TileDirection.Bottom)) tile.rotation = new Vector2(0, 180);
+
+                tileObject = endpointTile;
+            }
             else if(tile.tileType == TileType.Buildable)
             {
                 tileObject = buildableTile;
@@ -150,7 +201,14 @@ public class TileSpawner : MonoBehaviour
             }
 
             //Spawn tile
-            Instantiate(tileObject, new Vector3(tile.position.x, 0, tile.position.y), Quaternion.Euler(tile.rotation.x, tile.rotation.y, 0));
+            GameObject newTile = Instantiate(tileObject, new Vector3(tile.position.x, 0, tile.position.y), Quaternion.Euler(tile.rotation.x, tile.rotation.y, 0));
+
+            //Set waypoint id
+            if (tile.tileType == TileType.Waypoint || tile.tileType == TileType.Endpoint)
+            {
+                newTile.GetComponent<Waypoint>().id = tile.count;
+                Debug.Log(tile.count);
+            }
         }
 
         //Done spawning

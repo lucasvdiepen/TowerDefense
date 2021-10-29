@@ -122,104 +122,6 @@
             },
             {
                 "name": "Waypoint",
-                "count": 0
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            }
-        ],
-        [
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Path"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            }
-        ],
-        [
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Path"
-            },
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Buildable"
-            }
-        ],
-        [
-            {
-                "name": "Buildable"
-            },
-            {
-                "name": "Waypoint",
-                "count": 2
-            },
-            {
-                "name": "Path"
-            },
-            {
-                "name": "Path"
-            },
-            {
-                "name": "Path"
-            },
-            {
-                "name": "Path"
-            },
-            {
-                "name": "Path"
-            },
-            {
-                "name": "Waypoint",
                 "count": 1
             },
             {
@@ -234,6 +136,24 @@
                 "name": "Buildable"
             },
             {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
                 "name": "Path"
             },
             {
@@ -241,7 +161,9 @@
             },
             {
                 "name": "Buildable"
-            },
+            }
+        ],
+        [
             {
                 "name": "Buildable"
             },
@@ -253,6 +175,52 @@
             },
             {
                 "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            }
+        ],
+        [
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Waypoint",
+                "count": 3
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Path"
+            },
+            {
+                "name": "Waypoint",
+                "count": 2
             },
             {
                 "name": "Buildable"
@@ -298,7 +266,40 @@
                 "name": "Buildable"
             },
             {
-                "name": "Waypoint"
+                "name": "Path"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Buildable"
+            }
+        ],
+        [
+            {
+                "name": "Buildable"
+            },
+            {
+                "name": "Waypoint",
+                "count":  4
             },
             {
                 "name": "Buildable"

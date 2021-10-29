@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1297485302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +306,7 @@ MonoBehaviour:
   waypointTile: {fileID: 9135797563266223809, guid: 4858ab063b27b77469b88af530a9eb07, type: 3}
   spawnpointTile: {fileID: 7631485624507232634, guid: 49a1b95194d1dcc43b35af8f310f0a87, type: 3}
   buildableTile: {fileID: 165918762511944657, guid: b541a080f232c2d418c0f75a5d35b56f, type: 3}
+  endpointTile: {fileID: 3523229794852905721, guid: b6a4be4b3ca67a049a0aa6d53bc9c703, type: 3}
   defaultTiles:
   - {fileID: 2453140788971157972, guid: 5a9f89fcb76b5104babad2722c599f32, type: 3}
   - {fileID: 2453140788971157972, guid: 2351e12b1370b1445a2471563f69489a, type: 3}
