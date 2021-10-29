@@ -82,4 +82,9 @@ public class TowerSelector : MonoBehaviour
 
         return false;
     }
+
+    public GameObject GetCurrentTower()
+    {
+        return currentTowerScript.gameObject;
+    }
 }

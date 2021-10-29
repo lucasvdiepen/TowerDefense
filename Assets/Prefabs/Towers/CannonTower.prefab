@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1562000246}
   - component: {fileID: 8012447593120050329}
   - component: {fileID: 5261047626622829261}
+  - component: {fileID: 6246874520462879432}
   m_Layer: 6
   m_Name: CannonTower
   m_TagString: Tower
@@ -110,6 +111,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9918fd18404478e46afee4f3f1c16ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSelected: 0
+--- !u!114 &6246874520462879432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2329706291052757473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa0722d95c3b354a81ccdbb8794c8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUpgrade: 4
 --- !u!1 &3212665596020845079
 GameObject:
   m_ObjectHideFlags: 0

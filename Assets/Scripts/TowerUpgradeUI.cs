@@ -5,40 +5,135 @@ using UnityEngine.UI;
 
 public class TowerUpgradeUI : MonoBehaviour
 {
+    public RectTransform panel;
+
+    public Vector3 openPosition;
+    public Vector3 closedPosition;
+
+    private Vector3 panelPosition;
+
+    public float animationSpeed = 1f;
+
     public Button rangeButton;
     public Button damageButton;
+
+    public Button sellButton;
 
     public RawImage[] rangeUpgradePath;
     public RawImage[] damageUpgradePath;
 
+    public Texture emptyUpgradePath;
+    public Texture filledUpgradePath;
+
     public Color greyedOut;
 
-    private Animator animator;
+    private void OnEnable()
+    {
+        rangeButton.onClick.AddListener(UpgradeRangeClicked);
+        damageButton.onClick.AddListener(UpgradeDamageClicked);
+        sellButton.onClick.AddListener(SellClicked);
+    }
+
+    private void OnDisable()
+    {
+        rangeButton.onClick.RemoveAllListeners();
+        damageButton.onClick.RemoveAllListeners();
+        sellButton.onClick.RemoveAllListeners();
+    }
 
     public void OpenUI()
     {
-        //animator.SetTrigger("TowerSelectOpen");
-        animator.SetBool("OpenTowerSelect", true);
+        UpdateUI();
+
+        panelPosition = openPosition;
     }
 
     public void CloseUI()
     {
-        //animator.SetTrigger("TowerSelectClose");
-        animator.SetBool("CloseTowerSelect", true);
+        panelPosition = closedPosition;
+    }
+
+    private void UpgradeRangeClicked()
+    {
+        TowerUpgrade currentTower = GetCurrentTower();
+        if(currentTower != null)
+        {
+            currentTower.UpgradeRange();
+
+            UpdateUI();
+        }
+    }
+
+    private void UpgradeDamageClicked()
+    {
+        TowerUpgrade currentTower = GetCurrentTower();
+        if (currentTower != null)
+        {
+            currentTower.UpgradeDamage();
+
+            UpdateUI();
+        }
+    }
+
+    private void SellClicked()
+    {
+        throw new System.NotImplementedException();
     }
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        panelPosition = closedPosition;
     }
 
-    public void OpenAnimationFinished()
+    private void Update()
     {
-        animator.SetBool("OpenTowerSelect", false);
+        panel.anchoredPosition = Vector3.Lerp(panel.anchoredPosition, panelPosition, animationSpeed * Time.deltaTime);
     }
 
-    public void CloseAnimationFinished()
+    private TowerUpgrade GetCurrentTower()
     {
-        animator.SetBool("CloseTowerSelect", false);
+        return FindObjectOfType<TowerSelector>().GetCurrentTower().GetComponent<TowerUpgrade>();
+    }
+    private void UpdateUI()
+    {
+        TowerUpgrade currentTower = GetCurrentTower();
+
+        //Tower image
+
+        //Buttons
+        if(currentTower.CanRangeUpgrade())
+        {
+            rangeButton.GetComponent<Image>().color = Color.green;
+        }
+        else
+        {
+            rangeButton.GetComponent<Image>().color = greyedOut;
+        }
+
+        if (currentTower.CanDamageUpgrade())
+        {
+            damageButton.GetComponent<Image>().color = Color.green;
+        }
+        else
+        {
+            damageButton.GetComponent<Image>().color = greyedOut;
+        }
+
+        //Upgrade path
+        int rangeUpgradeCount = currentTower.GetRangeUpgradeCount();
+
+        for(int i = 0; i < rangeUpgradePath.Length; i++)
+        {
+            if (i <= (rangeUpgradeCount - 1)) rangeUpgradePath[i].texture = filledUpgradePath;
+            else rangeUpgradePath[i].texture = emptyUpgradePath;
+        }
+
+        int damageUpgradeCount = currentTower.GetDamageUpgradeCount();
+
+        for (int i = 0; i < damageUpgradePath.Length; i++)
+        {
+            if (i <= (damageUpgradeCount - 1)) damageUpgradePath[i].texture = filledUpgradePath;
+            else damageUpgradePath[i].texture = emptyUpgradePath;
+        }
     }
 }
