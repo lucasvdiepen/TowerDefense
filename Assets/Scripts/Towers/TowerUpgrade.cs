@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TowerUpgrade : MonoBehaviour
 {
+    public float damageUpgradeAmount = 1f;
+    public float rangeUpgradeAmount = 0.5f;
+
     private int rangeUpgrade = 0;
     private int damageUpgrade = 0;
 
@@ -33,21 +36,25 @@ public class TowerUpgrade : MonoBehaviour
 
     public void UpgradeRange()
     {
-        //Check if player has enough gold
+        //Check if player has enough gold here
 
         if(CanRangeUpgrade())
         {
             rangeUpgrade++;
+
+            GetComponent<Tower>().UpgradeRangeAmount(rangeUpgradeAmount);
         }
     }
 
     public void UpgradeDamage()
     {
-        //Check if player has enough gold
+        //Check if player has enough gold here
 
         if(CanDamageUpgrade())
         {
             damageUpgrade++;
+
+            GetComponent<Tower>().UpgradeDamageAmount(damageUpgradeAmount);
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    public int damage = 5;
+    public float damage = 5;
     public float range = 5f;
     public float fireRate = 0.2f;
 
@@ -104,16 +104,18 @@ public class Tower : MonoBehaviour
         weapon.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
-    public void UpgradeRangeAmount(float newAmount)
+    public void UpgradeRangeAmount(float amount)
     {
         //Upgrade range here
+        range += amount;
 
         UpdateRange();
     }
 
-    public void UpgradeDamageAmount(float newAmount)
+    public void UpgradeDamageAmount(float amount)
     {
         //Upgrade damage here
+        damage += amount;
     }
 
     private void UpdateRange()

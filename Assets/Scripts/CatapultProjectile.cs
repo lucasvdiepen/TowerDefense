@@ -16,7 +16,7 @@ public class CatapultProjectile : MonoBehaviour
     private float timeElapsed = 0f;
 
     private float explosionRange = 1f;
-    private int damage = 5;
+    private float damage = 5;
     private float travelTime = 2f;
 
     private void OnEnable()
@@ -24,7 +24,7 @@ public class CatapultProjectile : MonoBehaviour
         startPosition = transform.position;
     }
 
-    public void StartProjectile(Vector3 _target, float _travelTime, float _explosionRange, int _damage)
+    public void StartProjectile(Vector3 _target, float _travelTime, float _explosionRange, float _damage)
     {
         target = _target;
         travelTime = _travelTime;

@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
 
     public float bulletDestroyTime = 5f;
 
-    private int damage = 0;
+    private float damage = 0;
 
     private bool bulletStarted = false;
 
@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, bulletDestroyTime);
     }
 
-    public void StartBullet(Vector3 _target, int _damage)
+    public void StartBullet(Vector3 _target, float _damage)
     {
         target = _target;
         damage = _damage;
