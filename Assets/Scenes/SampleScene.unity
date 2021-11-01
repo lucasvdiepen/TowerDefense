@@ -9327,6 +9327,7 @@ GameObject:
   - component: {fileID: 2140303883}
   - component: {fileID: 2140303882}
   - component: {fileID: 2140303886}
+  - component: {fileID: 2140303887}
   m_Layer: 5
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -9431,6 +9432,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthText: {fileID: 1288498998}
+--- !u!114 &2140303887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140303881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d330d7cd6420c4f96d80ec654794d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldText: {fileID: 1182887173}
+  startingGold: 500
 --- !u!1001 &1480171661472007690
 PrefabInstance:
   m_ObjectHideFlags: 0

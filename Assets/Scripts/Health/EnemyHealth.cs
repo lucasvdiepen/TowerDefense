@@ -8,6 +8,8 @@ public class EnemyHealth : Health
     {
         base.HandleDeath();
 
+        GetComponent<EnemyGold>().GiveGold();
+
         FindObjectOfType<EnemySpawner>().DestroyEnemy(GetComponent<EnemyID>().GetID());
     }
 }
