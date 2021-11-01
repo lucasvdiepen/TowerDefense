@@ -310,7 +310,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5665025919504762893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.46, z: 7.94}
+  m_LocalPosition: {x: 0, y: 2.46, z: 0}
   m_LocalScale: {x: 1.9275, y: 1.9275, z: 1.9275}
   m_Children:
   - {fileID: 8267422386682465400}
@@ -407,6 +407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa0722d95c3b354a81ccdbb8794c8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageUpgradeAmount: 1
+  rangeUpgradeAmount: 0.5
   maxUpgrade: 4
 --- !u!1 &8222107479834337786
 GameObject:
