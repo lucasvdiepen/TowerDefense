@@ -7,19 +7,36 @@ public class Health : MonoBehaviour
     public float startingHealth = 100;
     private float health = 100;
 
-    private void Start()
+    public float CurrentHealth 
+    {
+        get { return health; } 
+    }
+
+    private void Awake()
     {
         health = startingHealth;
     }
 
     public void TakeDamage(float damage)
     {
-        //Debug.Log("Enemy taken damage: " + damage);
         health -= damage;
+
+        HandleDamage();
+
         if(health <= 0)
         {
-            //Enemy died
-            FindObjectOfType<EnemySpawner>().DestroyEnemy(GetComponent<EnemyID>().GetID());
+            //Dead
+            HandleDeath();
         }
+    }
+
+    protected virtual void HandleDamage()
+    {
+
+    }
+
+    protected virtual void HandleDeath()
+    {
+
     }
 }

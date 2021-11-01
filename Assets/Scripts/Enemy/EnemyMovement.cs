@@ -28,7 +28,9 @@ public class EnemyMovement : MonoBehaviour
             if (newWaypoint == null)
             {
                 //Reached end
-                Debug.Log("Enemy reached end");
+                //Debug.Log("Enemy reached end");
+                GetComponent<EnemyAttack>().DealDamage();
+
 
                 //For now just destroy itself
                 FindObjectOfType<EnemySpawner>().DestroyEnemy(GetComponent<EnemyID>().GetID());
