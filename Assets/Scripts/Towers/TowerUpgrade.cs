@@ -59,4 +59,14 @@ public class TowerUpgrade : MonoBehaviour
             GetComponent<Tower>().UpgradeDamageAmount(damageUpgradeAmount);
         }
     }
+
+    public void SellTower()
+    {
+        //Give gold
+        FindObjectOfType<GoldManager>().AddGold(GetComponent<TowerPrice>().GetSellPrice());
+
+        GetComponent<TowerSelect>().Deselect();
+
+        Destroy(gameObject);
+    }
 }

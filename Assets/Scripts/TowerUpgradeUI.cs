@@ -79,7 +79,11 @@ public class TowerUpgradeUI : MonoBehaviour
 
     private void SellClicked()
     {
-        throw new System.NotImplementedException();
+        TowerUpgrade currentTower = GetCurrentTower();
+        if(currentTower != null)
+        {
+            currentTower.SellTower();
+        }
     }
 
     private void Start()
