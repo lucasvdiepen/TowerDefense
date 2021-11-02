@@ -1243,6 +1243,7 @@ MonoBehaviour:
   rangeButton: {fileID: 784108346}
   damageButton: {fileID: 1112172878}
   sellButton: {fileID: 1025261869}
+  sellAmountText: {fileID: 1431828969}
   towerImage: {fileID: 69540006}
   rangeUpgradePath:
   - {fileID: 2132001768}

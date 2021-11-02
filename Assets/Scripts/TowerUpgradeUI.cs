@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ public class TowerUpgradeUI : MonoBehaviour
     public Button damageButton;
 
     public Button sellButton;
+    public TextMeshProUGUI sellAmountText;
 
     public RawImage towerImage;
 
@@ -142,5 +144,8 @@ public class TowerUpgradeUI : MonoBehaviour
             if (i <= (damageUpgradeCount - 1)) damageUpgradePath[i].texture = filledUpgradePath;
             else damageUpgradePath[i].texture = emptyUpgradePath;
         }
+
+        //Sell button
+        sellAmountText.text = currentTower.GetSellPrice() + " gold";
     }
 }

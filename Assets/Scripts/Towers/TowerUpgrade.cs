@@ -60,6 +60,11 @@ public class TowerUpgrade : MonoBehaviour
         }
     }
 
+    public int GetSellPrice()
+    {
+        return GetComponent<TowerPrice>().GetSellPrice();
+    }
+
     public void SellTower()
     {
         //Give gold

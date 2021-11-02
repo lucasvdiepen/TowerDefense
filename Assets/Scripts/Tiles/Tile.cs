@@ -45,10 +45,14 @@ public class Tile : MonoBehaviour
 
     public void BuildTile(GameObject tower)
     {
-        if(CanBuild())
+        if (CanBuild())
         {
-            //Build tile
-            placedObject = Instantiate(tower, transform.position, Quaternion.identity);
+            //Check if player has enough gold
+            if(FindObjectOfType<GoldManager>().Purchase(tower.GetComponent<TowerPrice>().GetBuildCost()))
+            {
+                //Build tile
+                placedObject = Instantiate(tower, transform.position, Quaternion.identity);
+            }
         }
     }
 }
