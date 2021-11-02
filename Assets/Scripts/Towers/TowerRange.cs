@@ -5,6 +5,7 @@ using UnityEngine;
 public class TowerRange : MonoBehaviour
 {
     public Transform rangeImage;
+    public bool canChange = true;
 
     public void UpdateRangeImage(float range)
     {
@@ -14,11 +15,17 @@ public class TowerRange : MonoBehaviour
 
     public void Show()
     {
-        rangeImage.gameObject.SetActive(true);
+        if(canChange)
+        {
+            rangeImage.gameObject.SetActive(true);
+        }
     }
 
     public void Hide()
     {
-        rangeImage.gameObject.SetActive(false);
+        if(canChange)
+        {
+            rangeImage.gameObject.SetActive(false);
+        }
     }
 }

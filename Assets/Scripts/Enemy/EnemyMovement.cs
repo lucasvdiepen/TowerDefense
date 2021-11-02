@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     private Vector3 target = Vector3.zero;
     private float slowForSeconds = 0;
     private float lastSlowTime = 0;
+    private bool isSlow = false;
 
     private void Start()
     {
@@ -20,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        CheckSlowDone();
+        //CheckSlowDone();
 
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
@@ -78,17 +79,28 @@ public class EnemyMovement : MonoBehaviour
 
     private void CheckSlowDone()
     {
-
+        float time = Time.time;
+        if(isSlow && time >= (lastSlowTime + slowForSeconds))
+        {
+            UnSlow();
+        }
     }
 
     public void UnSlow()
     {
-
+        speed = startingSpeed;
+        isSlow = false;
     }
 
     public void Slow(float speed, float seconds)
     {
-        lastSlowTime = Time.time;
-        slowForSeconds = seconds;
+        if(!isSlow)
+        {
+            lastSlowTime = Time.time;
+            isSlow = true;
+            slowForSeconds = seconds;
+
+            this.speed -= speed;
+        }
     }
 }

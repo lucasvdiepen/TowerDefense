@@ -11,6 +11,8 @@ public class Tower : MonoBehaviour
 
     public float turnSpeed = 5f;
 
+    public bool canRotate = true;
+
     public Transform weapon;
     public Transform shootPoint;
 
@@ -83,25 +85,28 @@ public class Tower : MonoBehaviour
 
     private void RotateToTarget()
     {
-        Vector3 rotateTarget = Vector3.zero;
+        if(canRotate)
+        {
+            Vector3 rotateTarget = Vector3.zero;
 
-        if(priorityTarget != null)
-        {
-            rotateTarget = (Vector3)priorityTarget;
-        }
-        else
-        {
-            if (target != null)
+            if (priorityTarget != null)
             {
-                rotateTarget = target.transform.position;
+                rotateTarget = (Vector3)priorityTarget;
             }
-            else return;
-        }
+            else
+            {
+                if (target != null)
+                {
+                    rotateTarget = target.transform.position;
+                }
+                else return;
+            }
 
-        Vector3 dir = rotateTarget - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Lerp(weapon.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        weapon.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            Vector3 dir = rotateTarget - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(dir);
+            Vector3 rotation = Quaternion.Lerp(weapon.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+            weapon.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
     }
 
     public void UpgradeRangeAmount(float amount)

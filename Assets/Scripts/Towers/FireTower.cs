@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class AOETower : MonoBehaviour
+public class FireTower : MonoBehaviour
 {
+    public float damage = 5f;
     public float range = 5f;
-    public float fireRate = 0.2f;
+    public float fireRate = 0.1f;
 
     private float lastAttackTime = 0;
+
+    TowerRange towerRangeScript = null;
+
+    private void Start()
+    {
+        towerRangeScript = GetComponent<TowerRange>();
+    }
 
     private List<GameObject> GetTargets()
     {
@@ -33,7 +41,7 @@ public class AOETower : MonoBehaviour
 
         foreach(GameObject target in targets)
         {
-            target.GetComponent<EnemyMovement>().
+            target.GetComponent<Health>().TakeDamage(damage);
         }
     }
 
@@ -47,5 +55,24 @@ public class AOETower : MonoBehaviour
 
             lastAttackTime = time;
         }
+    }
+
+    public void UpgradeRangeAmount(float amount)
+    {
+        //Upgrade range here
+        range += amount;
+
+        UpdateRange();
+    }
+
+    public void UpgradeDamageAmount(float amount)
+    {
+        //Upgrade damage here
+        damage += amount;
+    }
+
+    private void UpdateRange()
+    {
+        towerRangeScript.UpdateRangeImage(range);
     }
 }
