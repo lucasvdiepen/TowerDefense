@@ -5,17 +5,11 @@ using UnityEngine;
 
 public class FireTower : MonoBehaviour
 {
-    public float damage = 5f;
-    public float range = 5f;
-    public float fireRate = 0.1f;
-
-    private float lastAttackTime = 0;
-
-    TowerRange towerRangeScript = null;
+    Tower towerScript = null;
 
     private void Start()
     {
-        towerRangeScript = GetComponent<TowerRange>();
+        towerScript = GetComponent<Tower>();
     }
 
     private List<GameObject> GetTargets()
@@ -26,7 +20,7 @@ public class FireTower : MonoBehaviour
 
         foreach(GameObject enemy in enemies)
         {
-            if(Vector3.Distance(transform.position, enemy.transform.position) <= range)
+            if(Vector3.Distance(transform.position, enemy.transform.position) <= towerScript.range)
             {
                 l.Add(enemy);
             }
@@ -35,44 +29,18 @@ public class FireTower : MonoBehaviour
         return l;
     }
 
-    public void Attack()
+    public void OnTarget()
+    {
+
+    }
+
+    public void Shoot()
     {
         List<GameObject> targets = GetTargets();
 
-        foreach(GameObject target in targets)
+        foreach (GameObject target in targets)
         {
-            target.GetComponent<Health>().TakeDamage(damage);
+            target.GetComponent<Health>().TakeDamage(towerScript.damage);
         }
-    }
-
-    private void Update()
-    {
-        float time = Time.time;
-
-        if(time >= (lastAttackTime + fireRate))
-        {
-            Attack();
-
-            lastAttackTime = time;
-        }
-    }
-
-    public void UpgradeRangeAmount(float amount)
-    {
-        //Upgrade range here
-        range += amount;
-
-        UpdateRange();
-    }
-
-    public void UpgradeDamageAmount(float amount)
-    {
-        //Upgrade damage here
-        damage += amount;
-    }
-
-    private void UpdateRange()
-    {
-        towerRangeScript.UpdateRangeImage(range);
     }
 }
