@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public float startingSpeed = 5f;
     public float speed = 5f;
 
     private int waypointsCount = 0;
 
     private Vector3 target = Vector3.zero;
+    private float slowForSeconds = 0;
+    private float lastSlowTime = 0;
 
     private void Start()
     {
@@ -17,6 +20,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
+        CheckSlowDone();
+
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
 
         //Check if enemy reached waypoint
@@ -30,7 +35,6 @@ public class EnemyMovement : MonoBehaviour
                 //Reached end
                 //Debug.Log("Enemy reached end");
                 GetComponent<EnemyAttack>().DealDamage();
-
 
                 //For now just destroy itself
                 FindObjectOfType<EnemySpawner>().DestroyEnemy(GetComponent<EnemyID>().GetID());
@@ -70,5 +74,21 @@ public class EnemyMovement : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void CheckSlowDone()
+    {
+
+    }
+
+    public void UnSlow()
+    {
+
+    }
+
+    public void Slow(float speed, float seconds)
+    {
+        lastSlowTime = Time.time;
+        slowForSeconds = seconds;
     }
 }
