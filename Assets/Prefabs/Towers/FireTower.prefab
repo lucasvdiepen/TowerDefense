@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa0722d95c3b354a81ccdbb8794c8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerImage: {fileID: 2800000, guid: c550bcf8b125e3b4081ea7e65fec788b, type: 3}
   damageUpgradeAmount: 1
   rangeUpgradeAmount: 0.5
   maxUpgrade: 4
@@ -245,7 +246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7732613979522668960
 Transform:
   m_ObjectHideFlags: 0

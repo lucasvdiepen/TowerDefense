@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TowerUpgrade : MonoBehaviour
 {
+    public Texture towerImage;
+
     public float damageUpgradeAmount = 1f;
     public float rangeUpgradeAmount = 0.5f;
 

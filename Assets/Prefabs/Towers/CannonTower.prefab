@@ -55,6 +55,7 @@ MonoBehaviour:
   range: 5
   fireRate: 0.2
   turnSpeed: 5
+  canRotate: 1
   weapon: {fileID: 3107227744002461761}
   shootPoint: {fileID: 3212665596020845078}
   towerScript: {fileID: 3212665596294233268}
@@ -86,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangeImage: {fileID: 8788405613332776235}
+  canChange: 1
 --- !u!65 &8012447593120050329
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -124,6 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa0722d95c3b354a81ccdbb8794c8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerImage: {fileID: 2800000, guid: 42557f821481dbb41a1012571da6e3bc, type: 3}
+  damageUpgradeAmount: 1
+  rangeUpgradeAmount: 0.5
   maxUpgrade: 4
 --- !u!1 &3212665596020845079
 GameObject:

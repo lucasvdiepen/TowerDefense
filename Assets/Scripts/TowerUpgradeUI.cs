@@ -19,6 +19,8 @@ public class TowerUpgradeUI : MonoBehaviour
 
     public Button sellButton;
 
+    public RawImage towerImage;
+
     public RawImage[] rangeUpgradePath;
     public RawImage[] damageUpgradePath;
 
@@ -99,6 +101,7 @@ public class TowerUpgradeUI : MonoBehaviour
         TowerUpgrade currentTower = GetCurrentTower();
 
         //Tower image
+        towerImage.texture = currentTower.towerImage;
 
         //Buttons
         if(currentTower.CanRangeUpgrade())
