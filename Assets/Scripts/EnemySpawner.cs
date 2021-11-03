@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public int[] waves;
     public float spawnDelay = 0.1f;
     public float waveDelay = 7f;
+    public int enemyIncrease = 4;
 
     [HideInInspector]
     public Dictionary<int, GameObject> enemies = new Dictionary<int, GameObject>();
@@ -21,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
     private int enemyWaveCount = 0;
     private bool waitingForWave = false;
     private bool wavesDone = false;
+    private int enemiesToSpawn = 0;
 
     private void Start()
     {
@@ -45,7 +47,9 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemy();
             enemyWaveCount++;
 
-            if(enemyWaveCount >= waves[wave])
+            if ((waves == null || waves.Length == 0) && enemiesToSpawn <= enemyWaveCount) isSpawning = false;
+
+            if(waves != null && waves.Length > 0 && enemyWaveCount >= waves[wave])
             {
                 isSpawning = false;
             }
@@ -64,10 +68,15 @@ public class EnemySpawner : MonoBehaviour
         wave++;
         waitingForWave = false;
 
-        if (wave >= waves.Length)
+        if (waves != null && waves.Length > 0 && wave >= waves.Length)
         {
             WavesDone();
             return;
+        }
+
+        if(waves == null || waves.Length == 0)
+        {
+            enemiesToSpawn = enemyIncrease * wave;
         }
 
         enemyWaveCount = 0;

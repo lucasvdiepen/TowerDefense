@@ -7,6 +7,8 @@ public class Health : MonoBehaviour
     public float startingHealth = 100;
     private float health = 100;
 
+    private bool isDead = false;
+
     public float CurrentHealth 
     {
         get { return health; } 
@@ -23,7 +25,7 @@ public class Health : MonoBehaviour
 
         HandleDamage();
 
-        if(health <= 0)
+        if(health <= 0 && !isDead)
         {
             //Dead
             HandleDeath();
@@ -37,6 +39,6 @@ public class Health : MonoBehaviour
 
     protected virtual void HandleDeath()
     {
-
+        isDead = true;
     }
 }
