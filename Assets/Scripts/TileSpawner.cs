@@ -207,7 +207,6 @@ public class TileSpawner : MonoBehaviour
             if (tile.tileType == TileType.Waypoint || tile.tileType == TileType.Endpoint)
             {
                 newTile.GetComponent<Waypoint>().id = tile.count;
-                Debug.Log(tile.count);
             }
         }
 
