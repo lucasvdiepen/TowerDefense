@@ -47,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemy();
             enemyWaveCount++;
 
-            if ((waves == null || waves.Length == 0) && enemiesToSpawn <= enemyWaveCount) isSpawning = false;
+            if ((waves == null || waves.Length == 0) && enemiesToSpawn > 0 && enemiesToSpawn <= enemyWaveCount) isSpawning = false;
 
             if(waves != null && waves.Length > 0 && enemyWaveCount >= waves[wave])
             {
@@ -76,7 +76,7 @@ public class EnemySpawner : MonoBehaviour
 
         if(waves == null || waves.Length == 0)
         {
-            enemiesToSpawn = enemyIncrease * wave;
+            enemiesToSpawn = enemyIncrease * (wave + 1);
         }
 
         enemyWaveCount = 0;
