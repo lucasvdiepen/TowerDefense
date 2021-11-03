@@ -12,6 +12,9 @@ public class CamaraMovement : MonoBehaviour
     public float maxCameraDistance = 5f;
 
     private Camera camera;
+    private bool cameraIsSetup = false;
+    private int mapWidth = 10;
+    private int mapHeight = 10;
 
     private void Start()
     {
@@ -22,14 +25,23 @@ public class CamaraMovement : MonoBehaviour
 
     private void Update()
     {
-        Movement();
-        Rotation();
-        Zoom();
+        if(cameraIsSetup)
+        {
+            Movement();
+            Rotation();
+            Zoom();
+        }
     }
 
-    public void UpdateCenter(Vector3 centerPoint)
+    public void UpdateMap(int width, int height)
     {
+        mapWidth = width;
+        mapHeight = height;
+
+        Vector3 centerPoint = new Vector3(width / 2, 0, height / 2);
         transform.position = new Vector3(centerPoint.x, transform.position.y, centerPoint.z);
+
+        cameraIsSetup = true;
     }
 
     public void UpdateMaxZoomDistance()
@@ -65,6 +77,7 @@ public class CamaraMovement : MonoBehaviour
         //Should not be able to move outside the map
 
         transform.Translate(new Vector3(x, 0, y) * movementSpeed * Time.deltaTime, Space.Self);
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0, mapWidth), transform.position.y, Mathf.Clamp(transform.position.z, 0, mapHeight));
     }
 
     private void Rotation()
