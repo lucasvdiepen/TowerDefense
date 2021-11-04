@@ -136,6 +136,9 @@ public class TileSpawner : MonoBehaviour
 
     private void SpawnTiles()
     {
+        int highestX = -1;
+        int highestY = -1;
+
         for(int i = 0; i < tiles.Count; i++)
         {
             GameObject tileObject = null;
@@ -208,7 +211,12 @@ public class TileSpawner : MonoBehaviour
             {
                 newTile.GetComponent<Waypoint>().id = tile.count;
             }
+
+            if (tile.position.x > highestX) highestX = (int)tile.position.x;
+            if (tile.position.y > highestY) highestY = (int)tile.position.y;
         }
+
+        FindObjectOfType<CamaraMovement>().UpdateMap(highestX + 1, highestY + 1);
 
         //Done spawning
         Destroy(gameObject);

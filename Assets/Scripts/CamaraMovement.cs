@@ -38,7 +38,7 @@ public class CamaraMovement : MonoBehaviour
         mapWidth = width;
         mapHeight = height;
 
-        Vector3 centerPoint = new Vector3(width / 2, 0, height / 2);
+        Vector3 centerPoint = new Vector3((float)width / 2, 0, (float)height / 2);
         transform.position = new Vector3(centerPoint.x, transform.position.y, centerPoint.z);
 
         cameraIsSetup = true;
@@ -111,7 +111,7 @@ public class CamaraMovement : MonoBehaviour
             float distance = Vector3.Distance(newCameraPosition, transform.position);
             Debug.Log(distance);
 
-            if (distance >= minCamaraDistance && distance <= maxCameraDistance)
+            if (distance >= minCamaraDistance && distance <= maxCameraDistance && newCameraPosition.y > transform.position.y)
             {
                 camera.transform.position = newCameraPosition;
             }
