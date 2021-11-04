@@ -40,7 +40,7 @@ public class TowerSpawnerUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) ToggleUI();
+        if (Input.GetKeyDown(KeyCode.F)) ToggleUI();
 
         panel.anchoredPosition = Vector3.Lerp(panel.anchoredPosition, panelPosition, animationSpeed * Time.deltaTime);
     }

@@ -358,6 +358,7 @@ MonoBehaviour:
   travelTime: 2
   shootDelay: 0.9
   afterShootDelay: 0.4
+  explosionRange: 4
 --- !u!114 &1389071083
 MonoBehaviour:
   m_ObjectHideFlags: 0

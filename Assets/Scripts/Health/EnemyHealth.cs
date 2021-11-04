@@ -12,4 +12,13 @@ public class EnemyHealth : Health
 
         FindObjectOfType<EnemySpawner>().DestroyEnemy(GetComponent<EnemyID>().GetID());
     }
+
+    protected override void HandleDamage()
+    {
+        base.HandleDamage();
+
+        Debug.Log("Enemy took damage");
+
+        GetComponent<EnemyDamageEffect>().DamageEffect();
+    }
 }

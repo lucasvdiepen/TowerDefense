@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -5872528089591637363}
   - component: {fileID: 6656002309108348319}
   - component: {fileID: -714435441766753634}
+  - component: {fileID: 8521933282984523416}
   m_Layer: 7
   m_Name: TestEnemy
   m_TagString: Enemy
@@ -124,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b724372f9ec70c49b4882797810464c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingSpeed: 5
   speed: 4
 --- !u!114 &-5872528089591637363
 MonoBehaviour:
@@ -164,3 +166,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gold: 10
+--- !u!114 &8521933282984523416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480171662513721842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cad59201c0267d4bb1d3df608b77b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMaterial: {fileID: 2100000, guid: 5c4acda978220cc419f2799a67480564, type: 2}
+  enemyDamageMaterial: {fileID: 2100000, guid: 5d82067e936dd8942bf3af1adb5e4e71, type: 2}
+  damageEffectTime: 0.1

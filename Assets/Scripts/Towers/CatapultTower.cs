@@ -14,6 +14,8 @@ public class CatapultTower : MonoBehaviour
 
     public float afterShootDelay = 0.4f;
 
+    public float explosionRange = 1f;
+
     private Tower towerScript;
 
     private GameObject selectedTarget = null;
@@ -73,7 +75,7 @@ public class CatapultTower : MonoBehaviour
             if (predictedPosition == null) return;
 
             GameObject newBullet = Instantiate(bullet, towerScript.shootPoint.position, towerScript.shootPoint.rotation);
-            newBullet.GetComponent<CatapultProjectile>().StartProjectile((Vector3)predictedPosition, travelTime, 1f, towerScript.damage);
+            newBullet.GetComponent<CatapultProjectile>().StartProjectile((Vector3)predictedPosition, travelTime, explosionRange, towerScript.damage);
         }
 
         selectedTarget = null;
