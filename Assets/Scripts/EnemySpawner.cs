@@ -23,6 +23,7 @@ public class EnemySpawner : MonoBehaviour
     private bool waitingForWave = false;
     private bool wavesDone = false;
     private int enemiesToSpawn = 0;
+    private bool isStoppedSpawning = false;
 
     private void Start()
     {
@@ -32,34 +33,37 @@ public class EnemySpawner : MonoBehaviour
 
     private void Update()
     {
-        float time = Time.time;
-
-        //Check if should start new wave
-        if (!isSpawning && waitingForWave && time >= (lastWaveTime + waveDelay))
+        if(!isStoppedSpawning)
         {
-            StartWave();
-        }
+            float time = Time.time;
 
-        //Check if should spawn enemy
-        if(isSpawning && time >= (lastEnemySpawnTime + spawnDelay))
-        {
-            lastEnemySpawnTime = time;
-            SpawnEnemy();
-            enemyWaveCount++;
-
-            if ((waves == null || waves.Length == 0) && enemiesToSpawn > 0 && enemiesToSpawn <= enemyWaveCount) isSpawning = false;
-
-            if(waves != null && waves.Length > 0 && enemyWaveCount >= waves[wave])
+            //Check if should start new wave
+            if (!isSpawning && waitingForWave && time >= (lastWaveTime + waveDelay))
             {
-                isSpawning = false;
+                StartWave();
             }
-        }
 
-        if (!waitingForWave && enemies.Count <= 0)
-        {
-            //Start wave timer
-            lastWaveTime = time;
-            waitingForWave = true;
+            //Check if should spawn enemy
+            if (isSpawning && time >= (lastEnemySpawnTime + spawnDelay))
+            {
+                lastEnemySpawnTime = time;
+                SpawnEnemy();
+                enemyWaveCount++;
+
+                if ((waves == null || waves.Length == 0) && enemiesToSpawn > 0 && enemiesToSpawn <= enemyWaveCount) isSpawning = false;
+
+                if (waves != null && waves.Length > 0 && enemyWaveCount >= waves[wave])
+                {
+                    isSpawning = false;
+                }
+            }
+
+            if (!waitingForWave && enemies.Count <= 0)
+            {
+                //Start wave timer
+                lastWaveTime = time;
+                waitingForWave = true;
+            }
         }
     }
 
@@ -90,6 +94,11 @@ public class EnemySpawner : MonoBehaviour
             wavesDone = true;
             Debug.Log("WavesDone");
         }
+    }
+
+    public void StopSpawning()
+    {
+        isStoppedSpawning = true;
     }
 
     private void SpawnEnemy()

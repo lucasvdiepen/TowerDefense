@@ -11,6 +11,8 @@ public class PauseScreen : MonoBehaviour
     public Button resumeButton;
     public Button quitButton;
 
+    public bool gameIsEnded = false;
+
     private void OnEnable()
     {
         resumeButton.onClick.AddListener(ResumeButtonClicked);
@@ -40,20 +42,31 @@ public class PauseScreen : MonoBehaviour
 
     private void ShowPause()
     {
-        pauseScreenHolder.SetActive(true);
-        Time.timeScale = 0;
+        if(!gameIsEnded)
+        {
+            pauseScreenHolder.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     private void HidePause()
     {
-        pauseScreenHolder.SetActive(false);
-        Time.timeScale = 1;
+        if(!gameIsEnded)
+        {
+            pauseScreenHolder.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 
     private void TogglePause()
     {
         if (IsPaused()) HidePause();
         else ShowPause();
+    }
+
+    public void GameEnded()
+    {
+        gameIsEnded = true;
     }
 
     private bool IsPaused()

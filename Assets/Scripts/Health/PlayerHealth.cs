@@ -25,5 +25,7 @@ public class PlayerHealth : Health
         base.HandleDeath();
 
         Debug.Log("Laat nu het game over scherm zien");
+
+        FindObjectOfType<LoseScreen>().ShowLoseScreen();
     }
 }
