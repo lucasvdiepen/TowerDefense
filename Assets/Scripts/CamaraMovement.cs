@@ -74,8 +74,6 @@ public class CamaraMovement : MonoBehaviour
             x += 1;
         }
 
-        //Should not be able to move outside the map
-
         transform.Translate(new Vector3(x, 0, y) * movementSpeed * Time.deltaTime, Space.Self);
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0, mapWidth), transform.position.y, Mathf.Clamp(transform.position.z, 0, mapHeight));
     }
