@@ -22,7 +22,7 @@ public class WinScreen : MonoBehaviour
         quitButton.onClick.RemoveAllListeners();
     }
 
-    public void ShowLoseScreen()
+    public void ShowWinScreen()
     {
         FindObjectOfType<PauseScreen>().GameEnded();
         FindObjectOfType<EnemySpawner>().StopSpawning();

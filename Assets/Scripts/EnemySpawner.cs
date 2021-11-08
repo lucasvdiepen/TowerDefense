@@ -78,6 +78,12 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
+        if((waves == null || waves.Length == 0) && FindObjectOfType<GameInfo>().wavesToFinish <= wave)
+        {
+            WavesDone();
+            return;
+        }
+
         if(waves == null || waves.Length == 0)
         {
             enemiesToSpawn = enemyIncrease * (wave + 1);
@@ -92,6 +98,7 @@ public class EnemySpawner : MonoBehaviour
         if(!wavesDone)
         {
             wavesDone = true;
+            FindObjectOfType<WinScreen>().ShowWinScreen();
             Debug.Log("WavesDone");
         }
     }
