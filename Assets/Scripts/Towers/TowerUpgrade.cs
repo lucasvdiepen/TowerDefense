@@ -9,6 +9,9 @@ public class TowerUpgrade : MonoBehaviour
     public float damageUpgradeAmount = 1f;
     public float rangeUpgradeAmount = 0.5f;
 
+    public int rangeUpgradePrice = 100;
+    public int damageUpgradePrice = 100;
+
     private int rangeUpgrade = 0;
     private int damageUpgrade = 0;
 
@@ -38,25 +41,27 @@ public class TowerUpgrade : MonoBehaviour
 
     public void UpgradeRange()
     {
-        //Check if player has enough gold here
-
         if(CanRangeUpgrade())
         {
-            rangeUpgrade++;
+            if(FindObjectOfType<GoldManager>().Purchase(rangeUpgradePrice))
+            {
+                rangeUpgrade++;
 
-            GetComponent<Tower>().UpgradeRangeAmount(rangeUpgradeAmount);
+                GetComponent<Tower>().UpgradeRangeAmount(rangeUpgradeAmount);
+            }
         }
     }
 
     public void UpgradeDamage()
     {
-        //Check if player has enough gold here
-
         if(CanDamageUpgrade())
         {
-            damageUpgrade++;
+            if(FindObjectOfType<GoldManager>().Purchase(damageUpgradePrice))
+            {
+                damageUpgrade++;
 
-            GetComponent<Tower>().UpgradeDamageAmount(damageUpgradeAmount);
+                GetComponent<Tower>().UpgradeDamageAmount(damageUpgradeAmount);
+            }
         }
     }
 
