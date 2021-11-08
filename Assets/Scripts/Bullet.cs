@@ -12,19 +12,19 @@ public class Bullet : MonoBehaviour
 
     private bool bulletStarted = false;
 
-    private Vector3 target;
+    private Transform target;
 
     private void Start()
     {
         Destroy(gameObject, bulletDestroyTime);
     }
 
-    public void StartBullet(Vector3 _target, float _damage)
+    public void StartBullet(Transform _target, float _damage)
     {
         target = _target;
         damage = _damage;
 
-        transform.LookAt(target);
+        //transform.LookAt(target);
 
         bulletStarted = true;
     }
@@ -33,7 +33,9 @@ public class Bullet : MonoBehaviour
     {
         if(bulletStarted)
         {
-            transform.Translate(new Vector3(0, 0, bulletSpeed * Time.deltaTime));
+            //transform.Translate(new Vector3(0, 0, bulletSpeed * Time.deltaTime));
+
+            transform.position = Vector3.MoveTowards(transform.position, target.position, bulletSpeed * Time.deltaTime);
         }
     }
 
