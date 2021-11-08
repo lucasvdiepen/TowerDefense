@@ -14,7 +14,7 @@ public class TileSpawner : MonoBehaviour
     public GameObject endpointTile;
     public GameObject[] defaultTiles;
 
-    public TextAsset jsonFile;
+    //public TextAsset jsonFile;
 
     public enum TileDirection
     {
@@ -123,7 +123,7 @@ public class TileSpawner : MonoBehaviour
     {
         //MapData mapData = JsonUtility.FromJson<MapData>(jsonFile.text);
 
-        MapData mapData = JsonConvert.DeserializeObject<MapData>(jsonFile.text);
+        MapData mapData = JsonConvert.DeserializeObject<MapData>(FindObjectOfType<GameInfo>().GetJsonMapData().text);
 
         for(int y = 0; y < mapData.data.Length; y++)
         {
