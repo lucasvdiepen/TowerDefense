@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public int damage = 5;
+    public int minDamage = 3;
+    public int maxDamage = 7;
 
     public void DealDamage()
     {
-        FindObjectOfType<PlayerHealth>().TakeDamage(damage);
+        FindObjectOfType<PlayerHealth>().TakeDamage(Random.Range(minDamage, maxDamage));
     }
 }
