@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameInfo : MonoBehaviour
 {
     [HideInInspector] private TextAsset jsonMapData;
-    [HideInInspector] private int wavesToFinish = 15;
+    [HideInInspector] private int wavesToFinish;
 
     public static GameInfo gameInfo;
 
@@ -33,7 +33,7 @@ public class GameInfo : MonoBehaviour
     {
         if(gameInfo != null)
         {
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
         }
         else
         {
