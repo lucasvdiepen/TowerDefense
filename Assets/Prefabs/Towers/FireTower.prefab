@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 7462089237339515887}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.18, y: 2.46, z: 3.93}
-  m_LocalScale: {x: 1.9275, y: 1.9275, z: 1.9275}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6605467237870956442}
   - {fileID: 7837804922576606952}
@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  range: 5
+  range: 2.6
   fireRate: 0.2
   turnSpeed: 5
   canRotate: 0

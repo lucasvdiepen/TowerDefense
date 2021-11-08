@@ -16,6 +16,8 @@ public class TowerSpawner : MonoBehaviour
     public Color greenPreviewColor;
 
     public LayerMask spawnLayerMask;
+
+    public float yOffset = 0.20f;
     
     [HideInInspector]
     public bool isSelected = false;
@@ -110,7 +112,7 @@ public class TowerSpawner : MonoBehaviour
 
         SetPreviewColor(CanBuild());
 
-        previewTower = Instantiate(previewTowers[selectedTowerId], tile.transform.position, Quaternion.identity);
+        previewTower = Instantiate(previewTowers[selectedTowerId], new Vector3(tile.transform.position.x, tile.transform.position.y + yOffset, tile.transform.position.z), Quaternion.identity);
 
         towerPreviewFade.StartFade();
     }
@@ -154,7 +156,7 @@ public class TowerSpawner : MonoBehaviour
         {
             if(selectedTile != null)
             {
-                selectedTile.GetComponent<Tile>().BuildTile(towers[selectedTowerId]);
+                selectedTile.GetComponent<Tile>().BuildTile(towers[selectedTowerId], yOffset);
             }
         }
     }

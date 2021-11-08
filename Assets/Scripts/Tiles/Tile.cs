@@ -43,7 +43,7 @@ public class Tile : MonoBehaviour
         return placedObject;
     }
 
-    public void BuildTile(GameObject tower)
+    public void BuildTile(GameObject tower, float yOffset)
     {
         if (CanBuild())
         {
@@ -51,7 +51,7 @@ public class Tile : MonoBehaviour
             if(FindObjectOfType<GoldManager>().Purchase(tower.GetComponent<TowerPrice>().GetBuildCost()))
             {
                 //Build tile
-                placedObject = Instantiate(tower, transform.position, Quaternion.identity);
+                placedObject = Instantiate(tower, new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z), Quaternion.identity);
             }
         }
     }

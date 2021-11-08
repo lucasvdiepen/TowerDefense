@@ -9,7 +9,7 @@ public class TowerRange : MonoBehaviour
 
     public void UpdateRangeImage(float range)
     {
-        float newRangeScale = 1.293423f / 5f * range;
+        float newRangeScale = 1.293423f / 2.6f * range;
         rangeImage.localScale = new Vector3(newRangeScale, newRangeScale, newRangeScale);
     }
 
