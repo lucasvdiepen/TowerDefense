@@ -29,6 +29,13 @@ public class EnemySpawner : MonoBehaviour
     {
         //Get spawnpoint
         spawnPoint = FindObjectOfType<Spawnpoint>().GetPosition();
+
+        int wavesToWin = -1;
+
+        if (waves == null || waves.Length == 0) wavesToWin = FindObjectOfType<GameInfo>().wavesToFinish;
+        else wavesToWin = waves.Length;
+
+        FindObjectOfType<PlayerWavesUI>().SetWavesToWinText(wavesToWin);
     }
 
     private void Update()
@@ -88,6 +95,8 @@ public class EnemySpawner : MonoBehaviour
         {
             enemiesToSpawn = enemyIncrease * (wave + 1);
         }
+
+        FindObjectOfType<PlayerWavesUI>().SetWavesText(wave);
 
         enemyWaveCount = 0;
         isSpawning = true;
