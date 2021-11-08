@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameInfo : MonoBehaviour
 {
-    [HideInInspector] public TextAsset jsonMapData;
-    [HideInInspector] public int wavesToFinish = 15;
+    [HideInInspector] private TextAsset jsonMapData;
+    [HideInInspector] private int wavesToFinish = 15;
 
     public static GameInfo gameInfo;
 
@@ -17,6 +17,16 @@ public class GameInfo : MonoBehaviour
     public void SetWavesToFinish(int waves)
     {
         wavesToFinish = waves;
+    }
+
+    public int GetWavesToFinish()
+    {
+        return wavesToFinish;
+    }
+
+    public TextAsset GetJsonMapData()
+    {
+        return jsonMapData;
     }
 
     private void Awake()

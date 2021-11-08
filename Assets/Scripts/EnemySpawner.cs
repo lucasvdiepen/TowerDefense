@@ -33,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
 
         int wavesToWin = -1;
 
-        if (waves == null || waves.Length == 0) wavesToWin = FindObjectOfType<GameInfo>().wavesToFinish;
+        if (waves == null || waves.Length == 0) wavesToWin = FindObjectOfType<GameInfo>().GetWavesToFinish();
         else wavesToWin = waves.Length;
 
         FindObjectOfType<PlayerWavesUI>().SetWavesToWinText(wavesToWin);
@@ -86,7 +86,7 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        if((waves == null || waves.Length == 0) && FindObjectOfType<GameInfo>().wavesToFinish <= wave)
+        if((waves == null || waves.Length == 0) && FindObjectOfType<GameInfo>().GetWavesToFinish() <= wave)
         {
             WavesDone();
             return;
@@ -110,7 +110,7 @@ public class EnemySpawner : MonoBehaviour
             wavesDone = true;
             FindObjectOfType<WinScreen>().ShowWinScreen();
 
-            if(waves == null || waves.Length == 0) PlayerPrefs.SetInt("wavesToWin", FindObjectOfType<GameInfo>().wavesToFinish);
+            if(waves == null || waves.Length == 0) PlayerPrefs.SetInt("wavesToWin", FindObjectOfType<GameInfo>().GetWavesToFinish());
 
             Debug.Log("WavesDone");
         }

@@ -9,6 +9,7 @@ public class PlayerHealthUI : MonoBehaviour
 
     public void UpdateUI(float health)
     {
+        if (health < 0) health = 0;
         healthText.text = health.ToString();
     }
 }
