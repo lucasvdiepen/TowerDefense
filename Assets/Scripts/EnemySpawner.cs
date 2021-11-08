@@ -108,6 +108,9 @@ public class EnemySpawner : MonoBehaviour
         {
             wavesDone = true;
             FindObjectOfType<WinScreen>().ShowWinScreen();
+
+            if(waves == null || waves.Length == 0) PlayerPrefs.SetInt("wavesToWin", FindObjectOfType<GameInfo>().wavesToFinish);
+
             Debug.Log("WavesDone");
         }
     }

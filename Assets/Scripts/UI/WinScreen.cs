@@ -33,7 +33,7 @@ public class WinScreen : MonoBehaviour
 
     public void NextButtonClicked()
     {
-        Debug.Log("Load next level here");
+        FindObjectOfType<GameManager>().LoadNewLevel();
     }
 
     public void QuitButtonClicked()
