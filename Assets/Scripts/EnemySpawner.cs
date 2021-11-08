@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public float spawnDelay = 0.1f;
     public float waveDelay = 7f;
     public int enemyIncrease = 4;
+    public float yOffset = 0.623f;
 
     [HideInInspector]
     public Dictionary<int, GameObject> enemies = new Dictionary<int, GameObject>();
@@ -122,7 +123,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        GameObject newEnemy = Instantiate(enemyObjects[0], spawnPoint, Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemyObjects[0], spawnPoint + new Vector3(0, yOffset, 0), Quaternion.identity);
         newEnemy.GetComponent<EnemyID>().Setup(enemyCounter);
 
         enemies.Add(enemyCounter, newEnemy);

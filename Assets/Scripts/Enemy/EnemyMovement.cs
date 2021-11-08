@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     public float startingSpeed = 5f;
     public float speed = 5f;
+    public float yOffset = 0.623f;
 
     private int waypointsCount = 0;
 
@@ -71,7 +72,7 @@ public class EnemyMovement : MonoBehaviour
 
         foreach(Waypoint waypoint in waypoints)
         {
-            if (waypoint.id == waypointId) return waypoint.GetPosition();
+            if (waypoint.id == waypointId) return waypoint.GetPosition() + new Vector3(0, yOffset, 0);
         }
 
         return null;
