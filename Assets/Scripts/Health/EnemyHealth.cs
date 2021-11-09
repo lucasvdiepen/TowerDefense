@@ -17,8 +17,6 @@ public class EnemyHealth : Health
     {
         base.HandleDamage();
 
-        Debug.Log("Enemy took damage");
-
         GetComponent<EnemyDamageEffect>().DamageEffect();
     }
 }
