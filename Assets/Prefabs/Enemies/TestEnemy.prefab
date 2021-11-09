@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingSpeed: 5
   speed: 4
+  yOffset: 0.623
 --- !u!114 &-5872528089591637363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70be6e70f2bcaae4283c1c288d0b8650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 20
+  startingHealth: 100
 --- !u!114 &6656002309108348319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794965c60163fb248bdfab0b64e325d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  minDamage: 3
+  maxDamage: 7
 --- !u!114 &-714435441766753634
 MonoBehaviour:
   m_ObjectHideFlags: 0

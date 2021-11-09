@@ -175,8 +175,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerImage: {fileID: 2800000, guid: c550bcf8b125e3b4081ea7e65fec788b, type: 3}
-  damageUpgradeAmount: 1
-  rangeUpgradeAmount: 0.5
+  damageUpgradeAmount: 0.75
+  rangeUpgradeAmount: 0.25
+  rangeUpgradePrice: 100
+  damageUpgradePrice: 100
   maxUpgrade: 4
 --- !u!114 &7732613978082540613
 MonoBehaviour:
@@ -203,7 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51b491a73b034e4fbe2a16868e771fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 4
   range: 2.6
   fireRate: 0.2
   turnSpeed: 5

@@ -13,6 +13,7 @@ public class Bullet : MonoBehaviour
     private bool bulletStarted = false;
 
     private Transform target;
+    private Vector3 lastTargetPosition;
 
     private void Start()
     {
@@ -34,8 +35,15 @@ public class Bullet : MonoBehaviour
         if(bulletStarted)
         {
             //transform.Translate(new Vector3(0, 0, bulletSpeed * Time.deltaTime));
-
-            transform.position = Vector3.MoveTowards(transform.position, target.position, bulletSpeed * Time.deltaTime);
+            Vector3 targetPosition;
+            if (target == null) targetPosition = lastTargetPosition;
+            else
+            {
+                targetPosition = target.position;
+                lastTargetPosition = targetPosition;
+            }
+            
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, bulletSpeed * Time.deltaTime);
         }
     }
 
