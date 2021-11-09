@@ -414,8 +414,8 @@ MonoBehaviour:
   towerImage: {fileID: 2800000, guid: e1351aed91f033d40a4a7947e0da51ee, type: 3}
   damageUpgradeAmount: 5
   rangeUpgradeAmount: 0.3
-  rangeUpgradePrice: 100
-  damageUpgradePrice: 100
+  rangeUpgradePrice: 50
+  damageUpgradePrice: 50
   maxUpgrade: 4
 --- !u!114 &4805808959412812145
 MonoBehaviour:
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7bd71b7281cc254ea28c0100a47f743, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildCost: 100
+  buildCost: 150
 --- !u!1 &8222107479834337786
 GameObject:
   m_ObjectHideFlags: 0

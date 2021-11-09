@@ -130,8 +130,8 @@ MonoBehaviour:
   towerImage: {fileID: 2800000, guid: 42557f821481dbb41a1012571da6e3bc, type: 3}
   damageUpgradeAmount: 2
   rangeUpgradeAmount: 0.25
-  rangeUpgradePrice: 100
-  damageUpgradePrice: 100
+  rangeUpgradePrice: 50
+  damageUpgradePrice: 50
   maxUpgrade: 4
 --- !u!114 &6967952991358233347
 MonoBehaviour:
