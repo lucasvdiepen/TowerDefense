@@ -45,4 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jsonMapData:
   - {fileID: 4900000, guid: 278bc1df6558cf4448d3dce4d7c8e580, type: 3}
+  - {fileID: 4900000, guid: f5e28d05da10e5b439679fc9e866d3b6, type: 3}
   wavesToWinIncrease: 3
