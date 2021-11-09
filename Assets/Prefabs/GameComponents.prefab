@@ -1815,7 +1815,7 @@ MonoBehaviour:
   enemyObjects:
   - {fileID: 1480171662513721842, guid: f30f6ef042bd43e438f10a56fcdf6f1e, type: 3}
   waves: 
-  spawnDelay: 0.4
+  spawnDelay: 0.3
   waveDelay: 5
   enemyIncrease: 4
   yOffset: 0.623

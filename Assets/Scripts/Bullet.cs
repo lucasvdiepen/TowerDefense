@@ -36,12 +36,21 @@ public class Bullet : MonoBehaviour
         {
             //transform.Translate(new Vector3(0, 0, bulletSpeed * Time.deltaTime));
             Vector3 targetPosition;
-            if (target == null) targetPosition = lastTargetPosition;
+            if (target == null)
+            {
+                targetPosition = lastTargetPosition;
+                if (Vector3.Distance(transform.position, targetPosition) <= 0.01f)
+                {
+                    Destroy(gameObject);
+                    Debug.Log("bullet destroyed");
+                }
+            }
             else
             {
                 targetPosition = target.position;
                 lastTargetPosition = targetPosition;
             }
+
             
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, bulletSpeed * Time.deltaTime);
         }
